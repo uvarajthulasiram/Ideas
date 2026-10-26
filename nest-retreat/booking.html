@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nest Retreat booking step</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+:root{--surface:#f4f2ee;--surface-raised:#fbfaf7;--surface-sunk:#e8e5df;--ink:#22313a;--ink-muted:#5a6267;--hairline:#d3cfc8;--driftwood:#a07c5b;--driftwood-deep:#6f5038;--seaglass:#9fbcae;--action:#3f6657;--on-action:#ffffff;--sound:#2f4652;--on-sound:#f4f2ee;--ember:#a34a22;--serif:"Newsreader",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif}
+body{margin:0;background:#f4f2ee}
+a{color:#6f5038}a:hover{color:#22313a}
+</style>
+</head>
+<body>
+<div style="background: var(--surface); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 28px; min-height: 100vh;">
+
+  <header style="border-bottom: 1px solid var(--hairline);">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <a href="index.html" style="font-family: var(--serif); font-size: 26px; line-height: 32px; color: var(--ink); text-decoration: none;">[Brand Name]</a>
+      <ol aria-label="Booking steps" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; line-height: 18px;">
+        <li style="color: var(--ink-muted);">1. Dates</li>
+        <li style="font-weight: 600; color: var(--ink);" aria-current="step">2. Your details</li>
+        <li style="color: var(--ink-muted);">3. Secure payment</li>
+      </ol>
+    </div>
+  </header>
+
+  <div style="max-width: 1100px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 48px) 96px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+
+    <form style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <h1 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 46px;">Almost there</h1>
+        <p style="margin: 0; color: var(--ink-muted);">Your dates are held for [N] minutes while you finish.</p>
+      </div>
+
+      <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 16px;">
+        <legend style="padding: 0; margin-bottom: 16px; font-size: 18px; line-height: 26px; font-weight: 600;">Who's staying</legend>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+          <label style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 18px; font-weight: 600;">Full name
+            <input type="text" autocomplete="name" style="font-family: var(--sans); font-size: 15px; padding: 12px; border: 1px solid var(--hairline); border-radius: 4px; background: var(--surface-raised); color: var(--ink);">
+          </label>
+          <label style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 18px; font-weight: 600;">Email
+            <input type="email" autocomplete="email" style="font-family: var(--sans); font-size: 15px; padding: 12px; border: 1px solid var(--hairline); border-radius: 4px; background: var(--surface-raised); color: var(--ink);">
+          </label>
+        </div>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 18px; font-weight: 600; max-width: 340px;">Mobile phone
+          <input type="tel" autocomplete="tel" style="font-family: var(--sans); font-size: 15px; padding: 12px; border: 1px solid var(--hairline); border-radius: 4px; background: var(--surface-raised); color: var(--ink);">
+          <span style="font-weight: 400; color: var(--ink-muted);">For door codes and anything urgent during your stay.</span>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 18px; font-weight: 600;">A note for Allie (optional)
+          <textarea rows="3" style="font-family: var(--sans); font-size: 15px; padding: 12px; border: 1px solid var(--hairline); border-radius: 4px; background: var(--surface-raised); color: var(--ink); resize: vertical;"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset style="margin: 0; padding: 24px; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface-raised); display: flex; flex-direction: column; gap: 12px;">
+        <legend style="padding: 0 8px; font-size: 18px; line-height: 26px; font-weight: 600;">Before you pay</legend>
+        <p style="margin: 0; font-size: 15px; line-height: 24px;"><strong>Cancellation:</strong> [Plain-words summary of the cancellation policy]</p>
+        <p style="margin: 0; font-size: 15px; line-height: 24px;"><strong>House rules:</strong> [Two or three key rules] · <a href="#">Read all</a></p>
+        <label style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 24px;">
+          <input type="checkbox" style="width: 20px; height: 20px; margin: 2px 0 0; accent-color: #3f6657;">
+          <span>I agree to the <a href="#">house rules</a>, <a href="#">cancellation policy</a> and <a href="#">booking terms</a>.</span>
+        </label>
+      </fieldset>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <a href="#" style="align-self: flex-start; text-align: center; background: var(--action); color: var(--on-action); text-decoration: none; font-weight: 600; font-size: 15px; line-height: 20px; padding: 14px 32px; border-radius: 999px;">Continue to secure payment</a>
+        <p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--ink-muted); display: flex; gap: 8px; align-items: center;"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#5a6267" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="7" rx="1"></rect><path d="M5 7V5a3 3 0 0 1 6 0v2"></path></svg>Payment is handled by Stripe. We never see or store your card number.</p>
+      </div>
+    </form>
+
+    <aside aria-label="Your trip" style="flex: 1 1 320px; min-width: 0; background: var(--surface-raised); border: 1px solid var(--hairline); border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box;">
+      <img src="art/exterior.svg" alt="Illustration standing in for the Nest Retreat exterior photo" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 34px;">Nest Retreat</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">West Seattle · hosted by Allie</p>
+      </div>
+      <dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 24px; border-top: 1px solid var(--hairline); padding-top: 16px;">
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><dt>Dates</dt><dd style="margin: 0;">[Check-in] to [Check-out]</dd></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><dt>Guests</dt><dd style="margin: 0;">[N]</dd></div>
+      </dl>
+      <dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 24px; border-top: 1px solid var(--hairline); padding-top: 16px;">
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><dt>[N] nights × [$]</dt><dd style="margin: 0;">[$]</dd></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><dt>Cleaning fee</dt><dd style="margin: 0;">[$]</dd></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px;"><dt>Taxes</dt><dd style="margin: 0;">[$]</dd></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px; line-height: 26px; border-top: 1px solid var(--hairline); padding-top: 12px;"><dt>Total</dt><dd style="margin: 0;">[$]</dd></div>
+      </dl>
+      <div style="background: var(--surface); border-radius: 4px; padding: 16px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; line-height: 24px;">
+        <div style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600;"><span>Due today</span><span>[$ deposit]</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; color: var(--ink-muted);"><span>Charged [date]</span><span>[$ balance]</span></div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+</body>
+</html>

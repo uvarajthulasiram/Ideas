@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nest Retreat home page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+:root{--surface:#f4f2ee;--surface-raised:#fbfaf7;--surface-sunk:#e8e5df;--ink:#22313a;--ink-muted:#5a6267;--hairline:#d3cfc8;--driftwood:#a07c5b;--driftwood-deep:#6f5038;--seaglass:#9fbcae;--action:#3f6657;--on-action:#ffffff;--sound:#2f4652;--on-sound:#f4f2ee;--ember:#a34a22;--serif:"Newsreader",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif}
+body{margin:0;background:#f4f2ee}
+a{color:#6f5038}a:hover{color:#22313a}
+summary{cursor:pointer}
+</style>
+</head>
+<body>
+<div style="background: var(--surface); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 28px; min-height: 100vh;">
+
+  <header style="border-bottom: 1px solid var(--hairline);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <a href="#" style="font-family: var(--serif); font-size: 26px; line-height: 32px; color: var(--ink); text-decoration: none;">[Brand Name]</a>
+      <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 15px;">
+        <a href="property.html" style="color: var(--ink); text-decoration: none;">The cottage</a>
+        <a href="#day" style="color: var(--ink); text-decoration: none;">A day here</a>
+        <a href="#guide" style="color: var(--ink); text-decoration: none;">Allie's guide</a>
+        <a href="#questions" style="color: var(--ink); text-decoration: none;">Questions</a>
+        <a href="property.html" style="color: var(--on-action); background: var(--action); text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 999px;">Book your stay</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 80px clamp(16px, 4vw, 48px) 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;">
+    <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">West Seattle · A coastal cottage</p>
+    <h1 style="margin: 0; max-width: 900px; font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 7vw, 88px); line-height: 1.02; letter-spacing: -0.02em;">Slow mornings, a short walk from the <em style="font-style: italic; color: var(--action);">Sound</em>.</h1>
+    <p style="margin: 0; max-width: 560px; font-size: 19px; line-height: 30px; color: var(--ink-muted);">Nest Retreat is a warm two-bedroom cottage of high ceilings and natural wood, with a fenced backyard and a fire pit. Lowman Beach is just under a mile's walk away.</p>
+    <div aria-hidden="true" style="width: 48px; height: 1px; background: var(--driftwood);"></div>
+    <p style="margin: 0; font-size: 13px; line-height: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);">2 bedrooms · 2 private baths · sleeps 4</p>
+  </section>
+
+  <figure style="margin: 0 auto; max-width: 1360px; padding: 0 clamp(0px, 2vw, 24px); display: flex; flex-direction: column; gap: 12px;">
+    <img src="art/living.svg" alt="Illustration standing in for the living room photo: sofa, wood ceiling and a window onto the Sound" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 18px; display: block;">
+    <figcaption style="padding: 0 clamp(16px, 4vw, 48px); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; line-height: 18px; color: var(--ink-muted);"><span style="font-family: var(--serif); font-style: italic; font-size: 15px;">Plate I. The living room, first light.</span><span>Stand-in illustrations throughout · photos to come</span></figcaption>
+  </figure>
+
+  <section aria-label="Check availability" style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 48px) 0;">
+    <form style="background: var(--surface-raised); border: 1px solid var(--hairline); border-radius: 10px; padding: 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+      <label style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 18px; font-weight: 600;">Check-in
+        <input type="text" placeholder="Add date" style="font-family: var(--sans); font-size: 15px; padding: 12px; border: 1px solid var(--hairline); border-radius: 4px; background: var(--surface); color: var(--ink);">
+      </label>
+      <label style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 18px; font-weight: 600;">Check-out
+        <input type="text" placeholder="Add date" style="font-family: var(--sans); font-size: 15px; padding: 12px; border: 1px solid var(--hairline); border-radius: 4px; background: var(--surface); color: var(--ink);">
+      </label>
+      <label style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 18px; font-weight: 600;">Guests
+        <select style="font-family: var(--sans); font-size: 15px; padding: 12px; border: 1px solid var(--hairline); border-radius: 4px; background: var(--surface); color: var(--ink);">
+          <option>2 guests</option>
+          <option>1 guest</option>
+          <option>3 guests</option>
+          <option>4 guests</option>
+        </select>
+      </label>
+      <a href="property.html" style="flex: 1 1 200px; text-align: center; background: var(--action); color: var(--on-action); text-decoration: none; font-weight: 600; font-size: 15px; line-height: 20px; padding: 14px 24px; border-radius: 999px;">Check availability</a>
+    </form>
+    <p style="margin: 12px 0 0; font-size: 13px; line-height: 18px; color: var(--ink-muted);">You'll see the full price, taxes included, before you pay anything.</p>
+  </section>
+
+  <section id="letter" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+    <div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">A letter from your host</p>
+      <div style="width: 160px; aspect-ratio: 1 / 1; border-radius: 999px; background: var(--surface-sunk); border: 1px dashed var(--hairline); display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 13px; line-height: 18px; color: var(--ink-muted);">[Photo: Allie]</span>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--ink-muted);">12 years of hosting · Replies within [response time]</p>
+    </div>
+    <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px; border-left: 1px solid var(--hairline); padding-left: clamp(16px, 4vw, 48px);">
+      <span style="align-self: flex-start; font-size: 12px; line-height: 16px; padding: 4px 10px; border: 1px solid var(--hairline); border-radius: 999px; color: var(--ink-muted);">Sample text · Allie to rewrite in her own words</span>
+      <p style="margin: 0; font-family: var(--serif); font-size: clamp(24px, 2.6vw, 30px); line-height: 1.4;">For twelve years I've looked after other people's homes and other people's guests. Nest Retreat is the first one that's mine.</p>
+      <p style="margin: 0; font-family: var(--serif); font-size: 20px; line-height: 32px; color: var(--ink);">I chose it for the light under that high wood ceiling, and for the walk to the water. I've stocked the kitchen the way I'd want it, put good linens on both beds, and left you my favourite places nearby. If something isn't right, tell me, and I'll fix it.</p>
+      <p style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 24px; line-height: 32px;">Allie</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
+    <figure style="flex: 1 1 520px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+      <img src="art/firepit.svg" alt="Illustration standing in for the backyard photo: fire pit at dusk with two chairs and string lights" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; display: block;">
+      <figcaption style="font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 22px; color: var(--ink-muted);">Plate II. The fire pit, after dark.</figcaption>
+    </figure>
+    <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">The cottage</p>
+      <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">Part cabin, part <em style="font-style: italic;">beach house</em></h2>
+      <p style="margin: 0;">The main living space sits upstairs: a well-stocked kitchen, a living room with a fireplace, a dining nook and a desk for work, all under a high wood ceiling.</p>
+      <p style="margin: 0;">Out back, a fenced yard with a propane fire pit and seating. The garage has free parking and EV charging.</p>
+      <a href="property.html" style="font-weight: 600;">See the whole cottage</a>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+      <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">Travelling together</p>
+      <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">Two couples. <em style="font-style: italic;">Two floors.</em> Two private baths.</h2>
+      <p style="margin: 0; color: var(--ink-muted);">Each bedroom has its own bathroom, one on each level. Nobody waits for the shower, and nobody shares a wall with the other bed.</p>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch;">
+      <figure style="flex: 1.4 1 480px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+        <img src="art/bedroom.svg" alt="Illustration standing in for the king bedroom photo: bed under a sloped wood ceiling" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block;">
+        <figcaption style="font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 22px; color: var(--ink-muted);">Plate III. The king room, upstairs.</figcaption>
+      </figure>
+      <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 0;">
+        <div style="padding: 24px 0; border-top: 1px solid var(--ink); display: flex; flex-direction: column; gap: 8px;">
+          <p style="margin: 0; font-family: var(--serif); font-size: 15px; line-height: 20px; font-style: italic; color: var(--driftwood-deep);">Upstairs</p>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 34px;">King bedroom and full bath</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Beside the living space, with high ceilings and natural light.</p>
+        </div>
+        <div style="padding: 24px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: 8px;">
+          <p style="margin: 0; font-family: var(--serif); font-size: 15px; line-height: 20px; font-style: italic; color: var(--driftwood-deep);">Downstairs</p>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 34px;">Queen bedroom and its own bath</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">The quieter floor, next to the washer, dryer and garage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="day" style="margin-top: 120px; background: var(--surface-sunk);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+        <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">An unhurried day</p>
+        <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">A day at Nest Retreat</h2>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+        <li style="display: flex; flex-direction: column; gap: 12px;">
+          <img src="art/living.svg" alt="" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; display: block;">
+          <p style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 20px; color: var(--driftwood-deep);">Morning</p>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 30px;">Coffee by the window</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Light comes in under the wood ceiling. The kitchen is stocked for a slow breakfast.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 12px;">
+          <img src="art/beach.svg" alt="" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; display: block;">
+          <p style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 20px; color: var(--driftwood-deep);">Late morning</p>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 30px;">Down to the water</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Walk to Lowman Beach, then follow the shore path through Lincoln Park.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 12px;">
+          <img src="art/kitchen.svg" alt="" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; display: block;">
+          <p style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 20px; color: var(--driftwood-deep);">Afternoon</p>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 30px;">Lunch at the Junction</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Downtown West Seattle's cafés and shops are about a mile the other way.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 12px;">
+          <img src="art/firepit.svg" alt="" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; display: block;">
+          <p style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 20px; color: var(--driftwood-deep);">Evening</p>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 30px;">Fire pit, then fireplace</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Light the fire pit in the fenced yard, then finish the night by the fireplace inside.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="work" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+    <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">Staying to work</p>
+      <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">A work week <em style="font-style: italic;">by the Sound</em></h2>
+      <p style="margin: 0; color: var(--ink-muted);">Keep your hours, then close the laptop and be at the beach before sunset. Ask Allie about weekly rates.</p>
+    </div>
+    <dl style="flex: 1 1 520px; min-width: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 32px;">
+      <div style="padding: 20px 0; border-top: 1px solid var(--hairline);">
+        <dt style="font-family: var(--serif); font-size: 32px; line-height: 38px;">[N] Mbps</dt>
+        <dd style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Wi-Fi, measured download speed</dd>
+      </div>
+      <div style="padding: 20px 0; border-top: 1px solid var(--hairline);">
+        <dt style="font-family: var(--serif); font-size: 32px; line-height: 38px;">1 desk</dt>
+        <dd style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">A dedicated workspace upstairs</dd>
+      </div>
+      <div style="padding: 20px 0; border-top: 1px solid var(--hairline);">
+        <dt style="font-family: var(--serif); font-size: 32px; line-height: 38px;">EV ready</dt>
+        <dd style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Charging in the garage, free parking</dd>
+      </div>
+      <div style="padding: 20px 0; border-top: 1px solid var(--hairline);">
+        <dt style="font-family: var(--serif); font-size: 32px; line-height: 38px;">In-unit</dt>
+        <dd style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Washer and dryer for longer stays</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="guide" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+      <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">The neighborhood</p>
+      <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">Allie's guide to <em style="font-style: italic;">West Seattle</em></h2>
+      <p style="margin: 0; color: var(--ink-muted);">Beach walks one way, cafés the other, and forest trails in between.</p>
+    </div>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px;">
+      <img src="art/beach.svg" alt="Illustration standing in for a Lowman Beach photo: sunset over the Sound and the Olympic Mountains, driftwood on the beach" style="width: 100%; aspect-ratio: 21 / 9; object-fit: cover; border-radius: 10px; display: block;">
+      <figcaption style="font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 22px; color: var(--ink-muted);">Plate IV. Lowman Beach, just under a mile from the door.</figcaption>
+    </figure>
+    <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 0;">
+        <h3 style="margin: 0 0 8px; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Close by</h3>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline);"><p style="margin: 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">Lowman Beach</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Just under a mile's walk. Sunsets over the Sound.</p></div>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline);"><p style="margin: 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">Lincoln Park</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Forested trails and a long waterfront path.</p></div>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline);"><p style="margin: 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">Downtown West Seattle</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Cafés, shops and restaurants, about a mile away.</p></div>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);"><p style="margin: 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">Fauntleroy ferry</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Nearby, for a day trip to Vashon Island.</p></div>
+      </div>
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 0;">
+        <div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; margin-bottom: 8px;">
+          <h3 style="margin: 0; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Allie's picks</h3>
+          <span style="font-size: 12px; line-height: 16px; padding: 4px 10px; border: 1px solid var(--hairline); border-radius: 999px; color: var(--ink-muted);">Allie to fill in</span>
+        </div>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline);"><p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--driftwood-deep);">Morning coffee</p><p style="margin: 2px 0 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">[Café name]</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[One line on why she loves it]</p></div>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline);"><p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--driftwood-deep);">Bakery</p><p style="margin: 2px 0 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">[Bakery name]</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[What to order]</p></div>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline);"><p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--driftwood-deep);">Dinner</p><p style="margin: 2px 0 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">[Restaurant name]</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[Book ahead? What to order?]</p></div>
+        <div style="padding: 16px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);"><p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--driftwood-deep);">Rainy day</p><p style="margin: 2px 0 0; font-family: var(--serif); font-size: 22px; line-height: 28px;">[Her rainy-day pick]</p><p style="margin: 4px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[One line]</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="arrival" style="margin-top: 120px; background: var(--sound); color: var(--on-sound);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+        <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #dcbf9f;">Booking direct</p>
+        <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">How arrival works</h2>
+      </div>
+      <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+        <li style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #6c818c; padding-top: 24px;">
+          <span style="font-family: var(--serif); font-size: 56px; line-height: 56px; color: #dcbf9f;">1</span>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 30px;">Book and pay a deposit</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px;">Secure payment by Stripe. The balance is charged [N] days before you arrive.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #6c818c; padding-top: 24px;">
+          <span style="font-family: var(--serif); font-size: 56px; line-height: 56px; color: #dcbf9f;">2</span>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 30px;">Get your arrival guide</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px;">Directions, parking and Wi-Fi details arrive by email [N] days before your stay.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #6c818c; padding-top: 24px;">
+          <span style="font-family: var(--serif); font-size: 56px; line-height: 56px; color: #dcbf9f;">3</span>
+          <h3 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 30px;">Let yourself in</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 24px;">Your door code comes the day before. Self check-in from [time].</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="notes" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px;">
+        <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">The guestbook</p>
+        <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">Notes from verified stays</h2>
+      </div>
+      <a href="#" style="font-weight: 600; font-size: 15px;">Read our reviews on Airbnb</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+      <figure style="margin: 0; padding: 32px 0 0; border-top: 1px solid var(--ink); display: flex; flex-direction: column; gap: 16px;">
+        <span aria-hidden="true" style="font-family: var(--serif); font-size: 64px; line-height: 32px; color: var(--driftwood);">“</span>
+        <blockquote style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 32px; color: var(--ink-muted);">[A guest's own words, added after a real stay booked here.]</blockquote>
+        <figcaption style="font-size: 13px; line-height: 18px; color: var(--ink-muted);">[First name] · Verified stay · [Month Year]</figcaption>
+      </figure>
+      <figure style="margin: 0; padding: 32px 0 0; border-top: 1px solid var(--ink); display: flex; flex-direction: column; gap: 16px;">
+        <span aria-hidden="true" style="font-family: var(--serif); font-size: 64px; line-height: 32px; color: var(--driftwood);">“</span>
+        <blockquote style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 32px; color: var(--ink-muted);">[A guest's own words, added after a real stay booked here.]</blockquote>
+        <figcaption style="font-size: 13px; line-height: 18px; color: var(--ink-muted);">[First name] · Verified stay · [Month Year]</figcaption>
+      </figure>
+      <figure style="margin: 0; padding: 32px 0 0; border-top: 1px solid var(--ink); display: flex; flex-direction: column; gap: 16px;">
+        <span aria-hidden="true" style="font-family: var(--serif); font-size: 64px; line-height: 32px; color: var(--driftwood);">“</span>
+        <blockquote style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 32px; color: var(--ink-muted);">[A guest's own words, added after a real stay booked here.]</blockquote>
+        <figcaption style="font-size: 13px; line-height: 18px; color: var(--ink-muted);">[First name] · Verified stay · [Month Year]</figcaption>
+      </figure>
+    </div>
+    <p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--ink-muted);">Only guests who booked and stayed can leave a note here. We publish every one, good or bad.</p>
+  </section>
+
+  <section id="questions" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+    <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">Before you book</p>
+      <h2 style="margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">Questions guests ask</h2>
+      <p style="margin: 0; color: var(--ink-muted);">Something else? Email Allie at [contact email].</p>
+    </div>
+    <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column;">
+      <details open style="border-top: 1px solid var(--ink); padding: 20px 0;">
+        <summary style="font-family: var(--serif); font-size: 22px; line-height: 30px;">Is there parking?</summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Yes. Free parking in the garage, which also has EV charging.</p>
+      </details>
+      <details style="border-top: 1px solid var(--hairline); padding: 20px 0;">
+        <summary style="font-family: var(--serif); font-size: 22px; line-height: 30px;">What kind of EV charging is it?</summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[Charger type and whether guests bring their own cable]</p>
+      </details>
+      <details style="border-top: 1px solid var(--hairline); padding: 20px 0;">
+        <summary style="font-family: var(--serif); font-size: 22px; line-height: 30px;">Are there stairs?</summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">Yes. The cottage is on two levels, with the living space and king bedroom upstairs. [Number of steps, handrail]</p>
+      </details>
+      <details style="border-top: 1px solid var(--hairline); padding: 20px 0;">
+        <summary style="font-family: var(--serif); font-size: 22px; line-height: 30px;">Can we bring children or pets?</summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[Allie's policy on children and pets]</p>
+      </details>
+      <details style="border-top: 1px solid var(--hairline); padding: 20px 0;">
+        <summary style="font-family: var(--serif); font-size: 22px; line-height: 30px;">Can we use the fire pit any time?</summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[Hours, and what happens during Seattle burn bans]</p>
+      </details>
+      <details style="border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 20px 0;">
+        <summary style="font-family: var(--serif); font-size: 22px; line-height: 30px;">What's your cancellation policy?</summary>
+        <p style="margin: 12px 0 0; font-size: 15px; line-height: 24px; color: var(--ink-muted);">[Plain-words summary] · <a href="#">Read the full policy</a></p>
+      </details>
+    </div>
+  </section>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 96px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;">
+    <h2 style="margin: 0; max-width: 760px; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5vw, 64px); line-height: 1.05;">The fire pit is waiting.</h2>
+    <a href="property.html" style="background: var(--action); color: var(--on-action); text-decoration: none; font-weight: 600; font-size: 15px; line-height: 20px; padding: 16px 32px; border-radius: 999px;">Check availability</a>
+  </section>
+
+  <section id="policies" style="background: var(--surface-sunk);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 64px clamp(16px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <h3 style="margin: 0; font-size: 18px; line-height: 26px; font-weight: 600;">Cancellation</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 24px;">[Plain-words summary, e.g. full refund up to N days before arrival]</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <h3 style="margin: 0; font-size: 18px; line-height: 26px; font-weight: 600;">Paying</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 24px;">[Deposit] today, the rest [N] days before arrival. Secure payment by Stripe.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <h3 style="margin: 0; font-size: 18px; line-height: 26px; font-weight: 600;">Check-in</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 24px;">[Time] · self check-in · codes sent the day before</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <h3 style="margin: 0; font-size: 18px; line-height: 26px; font-weight: 600;">House rules</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 24px;"><a href="#">Read the house rules</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid var(--hairline);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; font-size: 13px; line-height: 20px; color: var(--ink-muted);">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <span style="font-family: var(--serif); font-size: 20px; line-height: 26px; color: var(--ink);">[Brand Name]</span>
+        <span>Seattle STR registration STR-OPLI-26-007039</span>
+        <span>[contact email] · [phone]</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+        <a href="#">Privacy</a>
+        <a href="#">Booking terms</a>
+        <a href="#">Listed on Find Direct Stays</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <rect width="1600" height="900" fill="#ece7df"/>
+  <path d="M0 0 L520 0 Q470 140 500 260 Q540 380 470 470 Q420 560 470 660 Q520 760 440 900 L0 900 Z" fill="#9fbcae"/>
+  <g stroke="#b9cfc4" stroke-width="3" fill="none">
+    <path d="M60 120 q60 -14 120 0"/><path d="M120 300 q60 -14 120 0"/><path d="M60 520 q60 -14 120 0"/><path d="M160 720 q60 -14 120 0"/>
+  </g>
+  <path d="M470 470 Q420 560 470 660 Q520 760 440 900 L760 900 L760 470 Z" fill="#b9cdb9"/>
+  <g fill="#86a597">
+    <circle cx="560" cy="560" r="16"/><circle cx="610" cy="600" r="14"/><circle cx="660" cy="540" r="18"/><circle cx="580" cy="680" r="15"/><circle cx="650" cy="650" r="13"/><circle cx="700" cy="720" r="17"/><circle cx="560" cy="790" r="14"/><circle cx="640" cy="820" r="16"/><circle cx="720" cy="610" r="12"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M520 0 L520 900" opacity="0"/>
+    <path d="M760 0 L760 900"/>
+    <path d="M500 300 L1600 300"/>
+    <path d="M1180 0 L1180 900"/>
+    <path d="M760 620 L1600 620"/>
+  </g>
+  <path d="M478 860 L380 900" stroke="#2f4652" stroke-width="6" stroke-dasharray="14 10" fill="none"/>
+  <rect x="452" y="824" width="56" height="28" rx="6" fill="#2f4652"/>
+  <path d="M960 430 Q760 420 560 310" fill="none" stroke="#a07c5b" stroke-width="5" stroke-dasharray="4 12" stroke-linecap="round"/>
+  <path d="M960 430 Q1080 360 1240 220" fill="none" stroke="#a07c5b" stroke-width="5" stroke-dasharray="4 12" stroke-linecap="round"/>
+  <path d="M960 430 Q820 520 700 560" fill="none" stroke="#a07c5b" stroke-width="5" stroke-dasharray="4 12" stroke-linecap="round"/>
+  <circle cx="540" cy="300" r="14" fill="#6f5038"/>
+  <circle cx="1240" cy="220" r="14" fill="#6f5038"/>
+  <circle cx="960" cy="430" r="44" fill="#2f4652"/>
+  <polygon points="936,436 960,410 984,436" fill="#f4f2ee"/>
+  <rect x="942" y="436" width="36" height="22" fill="#f4f2ee"/>
+  <g font-family="Georgia, serif" fill="#22313a">
+    <text x="1020" y="440" font-size="34">Nest Retreat</text>
+    <text x="560" y="270" font-size="30">Lowman Beach</text>
+    <text x="1262" y="210" font-size="30">Downtown</text>
+    <text x="1262" y="246" font-size="30">West Seattle</text>
+    <text x="560" y="520" font-size="30">Lincoln Park</text>
+    <text x="520" y="880" font-size="26">Fauntleroy ferry</text>
+    <text x="60" y="860" font-size="26" font-style="italic" fill="#2f4652">To Vashon</text>
+    <text x="80" y="80" font-size="30" font-style="italic" fill="#2f4652">Puget Sound</text>
+  </g>
+  <text x="1560" y="870" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#6f5038" text-anchor="end">Not to scale</text>
+</svg>
