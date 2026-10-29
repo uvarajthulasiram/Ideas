@@ -13,6 +13,37 @@ body{margin:0;background:#f4f2ee}
 a{color:#6f5038}a:hover{color:#22313a}
 summary{cursor:pointer}
 </style>
+<style>
+.story{max-width:1200px;margin:0 auto;padding:120px clamp(16px,4vw,48px) 0}
+.story-head{display:flex;flex-direction:column;gap:16px;max-width:720px;margin-bottom:24px}
+.story-eyebrow{margin:0;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--driftwood-deep)}
+.story-title{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1.04;letter-spacing:-.01em}
+.story-title em{font-style:italic;color:var(--action)}
+.story-grid{display:flex;gap:64px;align-items:flex-start}
+.story-visual{flex:1 1 55%;min-width:0;position:sticky;top:48px;height:calc(100vh - 96px);max-height:780px}
+.story-frame{position:relative;height:100%;border-radius:18px;overflow:hidden;background:var(--surface-sunk)}
+.story-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .7s ease,transform 1.4s ease}
+.story-img.is-active{opacity:1;transform:scale(1)}
+.story-count{position:absolute;left:20px;bottom:16px;margin:0;padding:6px 14px;border-radius:999px;background:rgba(244,242,238,.92);font-family:var(--serif);font-style:italic;font-size:15px;line-height:20px;color:var(--ink)}
+.story-steps{flex:1 1 45%;min-width:0}
+.story-step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:48px 0}
+.story-kicker{margin:0;font-family:var(--serif);font-style:italic;font-size:18px;line-height:24px;color:var(--driftwood-deep)}
+.story-text{margin:0;font-family:var(--serif);font-size:clamp(20px,1.9vw,23px);line-height:1.6;color:var(--ink)}
+.story-first::first-letter{float:left;font-size:4.2em;line-height:.82;padding:6px 10px 0 0;color:var(--action)}
+.story-pull{margin:8px 0;padding:16px 0;border-top:1px solid var(--driftwood);border-bottom:1px solid var(--driftwood);font-family:var(--serif);font-style:italic;font-size:clamp(26px,2.6vw,34px);line-height:1.25;color:var(--action)}
+.story-inline{display:none}
+.story-host{display:flex;gap:16px;align-items:center;margin-top:16px;padding-top:24px;border-top:1px solid var(--hairline)}
+.story-host-photo{flex:0 0 72px;height:72px;border-radius:999px;border:1px dashed var(--hairline);background:var(--surface-sunk);display:flex;align-items:center;justify-content:center;text-align:center}
+.story-host-photo span{font-size:10px;line-height:12px;color:var(--ink-muted)}
+.story-host p{margin:0;font-family:var(--serif);font-size:20px;line-height:28px}
+.story-host p span{font-family:var(--sans);font-size:13px;line-height:18px;color:var(--ink-muted)}
+@media (max-width:860px){
+  .story-visual{display:none}
+  .story-step{min-height:0;padding:28px 0}
+  .story-inline{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
+}
+@media (prefers-reduced-motion:reduce){.story-img{transition:none;transform:none}}
+</style>
 </head>
 <body>
 <div style="background: var(--surface); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 28px; min-height: 100vh;">
@@ -32,8 +63,8 @@ summary{cursor:pointer}
 
   <section style="max-width: 1200px; margin: 0 auto; padding: 80px clamp(16px, 4vw, 48px) 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;">
     <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">West Seattle · A coastal cottage</p>
-    <h1 style="margin: 0; max-width: 900px; font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 7vw, 88px); line-height: 1.02; letter-spacing: -0.02em;">Slow mornings, a short walk from the <em style="font-style: italic; color: var(--action);">Sound</em>.</h1>
-    <p style="margin: 0; max-width: 560px; font-size: 19px; line-height: 30px; color: var(--ink-muted);">Nest Retreat is a warm two-bedroom cottage of high ceilings and natural wood, with a fenced backyard and a fire pit. Lowman Beach is just under a mile's walk away.</p>
+    <h1 style="margin: 0; max-width: 900px; font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 7vw, 88px); line-height: 1.02; letter-spacing: -0.02em;">A small home with a big view of the <em style="font-style: italic; color: var(--action);">sky</em>.</h1>
+    <p style="margin: 0; max-width: 560px; font-size: 19px; line-height: 30px; color: var(--ink-muted);">Nest Retreat is a two-bedroom cottage on a quiet West Seattle street, its living space perched above under wood beams and big windows. Lowman Beach is just under a mile's walk away.</p>
     <div aria-hidden="true" style="width: 48px; height: 1px; background: var(--driftwood);"></div>
     <p style="margin: 0; font-size: 13px; line-height: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);">2 bedrooms · 2 private baths · sleeps 4</p>
   </section>
@@ -64,19 +95,56 @@ summary{cursor:pointer}
     <p style="margin: 12px 0 0; font-size: 13px; line-height: 18px; color: var(--ink-muted);">You'll see the full price, taxes included, before you pay anything.</p>
   </section>
 
-  <section id="letter" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 0; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
-    <div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
-      <p style="margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--driftwood-deep);">A letter from your host</p>
-      <div style="width: 160px; aspect-ratio: 1 / 1; border-radius: 999px; background: var(--surface-sunk); border: 1px dashed var(--hairline); display: flex; align-items: center; justify-content: center;">
-        <span style="font-size: 13px; line-height: 18px; color: var(--ink-muted);">[Photo: Allie]</span>
-      </div>
-      <p style="margin: 0; font-size: 13px; line-height: 18px; color: var(--ink-muted);">12 years of hosting · Replies within [response time]</p>
+  <section id="story" class="story" aria-labelledby="story-title">
+    <div class="story-head">
+      <p class="story-eyebrow">The story</p>
+      <h2 id="story-title" class="story-title">The Nest <em>Retreat</em></h2>
     </div>
-    <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px; border-left: 1px solid var(--hairline); padding-left: clamp(16px, 4vw, 48px);">
-      <span style="align-self: flex-start; font-size: 12px; line-height: 16px; padding: 4px 10px; border: 1px solid var(--hairline); border-radius: 999px; color: var(--ink-muted);">Sample text · Allie to rewrite in her own words</span>
-      <p style="margin: 0; font-family: var(--serif); font-size: clamp(24px, 2.6vw, 30px); line-height: 1.4;">For twelve years I've looked after other people's homes and other people's guests. Nest Retreat is the first one that's mine.</p>
-      <p style="margin: 0; font-family: var(--serif); font-size: 20px; line-height: 32px; color: var(--ink);">I chose it for the light under that high wood ceiling, and for the walk to the water. I've stocked the kitchen the way I'd want it, put good linens on both beds, and left you my favourite places nearby. If something isn't right, tell me, and I'll fix it.</p>
-      <p style="margin: 0; font-family: var(--serif); font-style: italic; font-size: 24px; line-height: 32px;">Allie</p>
+    <div class="story-grid">
+      <div class="story-visual" aria-hidden="true">
+        <div class="story-frame">
+          <img class="story-img is-active" data-step="0" src="art/garage.svg" alt="">
+          <img class="story-img" data-step="1" src="art/living.svg" alt="">
+          <img class="story-img" data-step="2" src="art/exterior.svg" alt="">
+          <img class="story-img" data-step="3" src="art/beach.svg" alt="">
+          <img class="story-img" data-step="4" src="art/firepit.svg" alt="">
+          <p class="story-count"><span class="story-count-now">I</span> / V</p>
+        </div>
+      </div>
+      <div class="story-steps">
+        <article class="story-step" data-step="0">
+          <p class="story-kicker">I. Where it began</p>
+          <img class="story-inline" src="art/garage.svg" alt="Illustration: the old garage that stood here, with the outline of the cottage that rose above it">
+          <p class="story-text story-first">For years, this spot on a quiet West Seattle street held nothing more than an old garage: a place for tools, bikes, and whatever didn&#8217;t fit anywhere else. When it came time for something new, the footprint stayed, but the cottage built on it reached upward.</p>
+        </article>
+        <article class="story-step" data-step="1">
+          <p class="story-kicker">II. Reaching upward</p>
+          <img class="story-inline" src="art/living.svg" alt="Illustration standing in for the upstairs living room: wood beams and a large window onto the sky">
+          <p class="story-text">That&#8217;s where the Nest gets its name. The main living space is perched above, where large windows frame the open sky and wood beams and warm wood accents wrap the room in a soft, sheltering glow.</p>
+          <blockquote class="story-pull">Cozy and protected, yet lifted toward the light.</blockquote>
+          <p class="story-text">It feels a little like being tucked into a nest: cozy and protected, yet lifted toward the light, the clouds, and the ever-changing Seattle sky.</p>
+        </article>
+        <article class="story-step" data-step="2">
+          <p class="story-kicker">III. The street below</p>
+          <img class="story-inline" src="art/exterior.svg" alt="Illustration standing in for the cottage exterior among gardens and evergreens">
+          <p class="story-text">Below, the neighborhood is settled and quiet. Established homes, tended gardens, neighbors who wave.</p>
+        </article>
+        <article class="story-step" data-step="3">
+          <p class="story-kicker">IV. Down to the water</p>
+          <img class="story-inline" src="art/beach.svg" alt="Illustration standing in for Lowman Beach at sunset over the Sound">
+          <p class="story-text">A short walk away, the street gives way to the water, where the Sound stretches wide and the air smells like salt.</p>
+        </article>
+        <article class="story-step" data-step="4">
+          <p class="story-kicker">V. Your days here</p>
+          <img class="story-inline" src="art/firepit.svg" alt="Illustration standing in for the backyard fire pit under the evening stars">
+          <p class="story-text">Your days here unfold slowly. Wake to soft light pouring through the windows, wander down to the beach with a coffee, and come home to your perch as the sky turns gold.</p>
+          <p class="story-text">Watch the weather roll in, or the stars come out, from a spot that feels just a little closer to both.</p>
+          <div class="story-host">
+            <div class="story-host-photo"><span>[Photo: Allie]</span></div>
+            <p>Your host, Allie<br><span>12 years of hosting &middot; Replies within [response time]</span></p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -301,7 +369,7 @@ summary{cursor:pointer}
   </section>
 
   <section style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 48px) 96px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;">
-    <h2 style="margin: 0; max-width: 760px; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5vw, 64px); line-height: 1.05;">The fire pit is waiting.</h2>
+    <h2 style="margin: 0; max-width: 760px; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5vw, 64px); line-height: 1.05;">Settle in and stay a while.</h2>
     <a href="property.html" style="background: var(--action); color: var(--on-action); text-decoration: none; font-weight: 600; font-size: 15px; line-height: 20px; padding: 16px 32px; border-radius: 999px;">Check availability</a>
   </section>
 
@@ -342,5 +410,23 @@ summary{cursor:pointer}
   </footer>
 
 </div>
+<script>
+(function () {
+  var steps = document.querySelectorAll('.story-step');
+  var imgs = document.querySelectorAll('.story-img');
+  var count = document.querySelector('.story-count-now');
+  var numerals = ['I', 'II', 'III', 'IV', 'V'];
+  if (!('IntersectionObserver' in window) || !steps.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var n = e.target.getAttribute('data-step');
+      imgs.forEach(function (img) { img.classList.toggle('is-active', img.getAttribute('data-step') === n); });
+      if (count) count.textContent = numerals[Number(n)] || '';
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach(function (s) { io.observe(s); });
+})();
+</script>
 </body>
 </html>

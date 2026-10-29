@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <rect width="1200" height="900" fill="#e4e2dd"/>
+  <path d="M90 640 L90 330 L40 450 L72 450 L20 560 L160 560 L108 450 L140 450 Z" fill="#8fa39a"/>
+  <path d="M1110 640 L1110 300 L1050 440 L1090 440 L1030 560 L1190 560 L1130 440 L1170 440 Z" fill="#8fa39a"/>
+  <g fill="none" stroke="#a07c5b" stroke-width="4" stroke-dasharray="14 12" stroke-linecap="round">
+    <polygon points="330,250 600,90 870,250"/>
+    <line x1="350" y1="250" x2="350" y2="440"/>
+    <line x1="850" y1="250" x2="850" y2="440"/>
+    <rect x="440" y="270" width="320" height="130"/>
+    <line x1="600" y1="270" x2="600" y2="400"/>
+  </g>
+  <text x="600" y="70" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="30" fill="#6f5038">what came next</text>
+  <polygon points="320,470 600,360 880,470" fill="#6b7277"/>
+  <polygon points="300,478 600,352 900,478 880,486 600,372 320,486" fill="#4d5459"/>
+  <rect x="340" y="470" width="520" height="210" fill="#9a958d"/>
+  <g stroke="#86817a" stroke-width="3">
+    <line x1="380" y1="470" x2="380" y2="680"/><line x1="420" y1="470" x2="420" y2="680"/><line x1="780" y1="470" x2="780" y2="680"/><line x1="820" y1="470" x2="820" y2="680"/>
+  </g>
+  <rect x="440" y="500" width="320" height="180" fill="#c9c4bb"/>
+  <g stroke="#a9a49b" stroke-width="4">
+    <line x1="440" y1="545" x2="760" y2="545"/><line x1="440" y1="590" x2="760" y2="590"/><line x1="440" y1="635" x2="760" y2="635"/>
+  </g>
+  <rect x="440" y="500" width="320" height="180" fill="none" stroke="#6b7277" stroke-width="8"/>
+  <rect x="580" y="652" width="40" height="8" rx="4" fill="#4d5459"/>
+  <rect y="680" width="1200" height="220" fill="#b9b3a8"/>
+  <polygon points="440,680 760,680 840,900 360,900" fill="#cfc9be"/>
+  <g fill="none" stroke="#22313a" stroke-width="7" stroke-linecap="round">
+    <circle cx="930" cy="740" r="46"/>
+    <circle cx="1060" cy="740" r="46"/>
+    <path d="M930 740 L975 670 L1040 670 L1060 740 M975 670 L1000 740 L1040 670 M968 650 L990 650 M1040 670 L1048 645 L1068 645"/>
+  </g>
+  <rect x="230" y="620" width="70" height="90" rx="8" fill="#5f8574"/>
+  <rect x="222" y="610" width="86" height="16" rx="6" fill="#46604f"/>
+  <path d="M170 700 q-10 -40 20 -60 q-6 30 14 40 q10 -30 34 -40 q-6 40 -20 60 z" fill="#7d9a8b"/>
+</svg>
