@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002F[policy]","\u002Fbook\u002F[property]","\u002Fstay\u002F[property]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

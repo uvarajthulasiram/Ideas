@@ -9,6 +9,7 @@ import { ApiError, getAvailability, postQuote, type NightInfo } from "../lib/api
 import { shortDate, type Locale } from "../lib/format";
 import { Calendar } from "./Calendar";
 import { QuoteLines } from "./QuoteLines";
+import { BOOKING_PREVIEW, withBase } from "../lib/base";
 
 export interface WidgetProperty {
   id: string;
@@ -47,7 +48,7 @@ export function BookingWidget({ property, l }: { property: WidgetProperty; l: Lo
   }, [property.maxGuests, property.timezone]);
 
   useEffect(() => {
-    if (!today) return;
+    if (!today || BOOKING_PREVIEW) return;
     setLoadError(null);
     getAvailability(property.id, today, addDays(today, 366))
       .then((r) => setNights(new Map(r.nights.map((n) => [n.date, n]))))
@@ -73,7 +74,7 @@ export function BookingWidget({ property, l }: { property: WidgetProperty; l: Lo
   }, [property.id, checkIn, checkOut, guests]);
 
   const reserveHref = useMemo(
-    () => (quote ? `/book/${property.slug}/?${new URLSearchParams({ checkIn: quote.checkIn, checkOut: quote.checkOut, guests: String(quote.guests) })}` : null),
+    () => (quote ? withBase(`/book/${property.slug}/?${new URLSearchParams({ checkIn: quote.checkIn, checkOut: quote.checkOut, guests: String(quote.guests) })}`) : null),
     [quote, property.slug],
   );
 
@@ -93,7 +94,9 @@ export function BookingWidget({ property, l }: { property: WidgetProperty; l: Lo
         </div>
       </div>
 
-      {loadError ? (
+      {BOOKING_PREVIEW ? (
+        <p className="notice">This is a preview: booking isn&apos;t connected yet, so dates and prices don&apos;t show here.</p>
+      ) : loadError ? (
         <div className="notice" role="alert">
           {loadError}{" "}
           <button type="button" className="button button--small" onClick={() => setAttempt((a) => a + 1)}>

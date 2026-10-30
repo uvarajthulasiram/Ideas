@@ -99,3 +99,11 @@ Uvaraj asked for every phase in one go, with stubs for missing inputs, and was a
 - Fix: dropped AVIF; photos are WebP at 480, 800 and 1126 px from a flattened source (`scripts/make-photos.mjs`). The hero stays `living-window-wall`.
 - Guard: `scripts/check-story.mjs` now checks that every photo on the home and cottage pages actually paints, at three sizes. Verified in Chromium and WebKit.
 - Would do differently: check decoded pixels, not just HTTP 200s, when generating images with a new tool.
+
+## 2026-10-30 · Merged to main; GitHub Pages preview · about 0.4 h
+
+- Optional base path (`NEXT_BASE_PATH`) for builds served from a subfolder; raw URLs (photos, fonts, plain links, markdown links) go through `withBase`. Preview mode (`NEXT_PUBLIC_BOOKING_PREVIEW=1`) replaces the calendar and checkout with "booking isn't connected yet" and skips Turnstile.
+- `scripts/build-pages-preview.mjs` builds `../nest-retreat-site` for https://uvarajthulasiram.github.io/Ideas/nest-retreat-site/. `.nojekyll` added at the repo root.
+- Checked under the real path in Chromium and WebKit: every photo paints, fonts load, the film autoplays, no links miss the base path, no 4xx responses, no errors.
+- Allie's original photos (`nest-retreat/photos/`) committed. The Ideas repo is public.
+- `direct-booking` merged into `main` and pushed (asked for by Uvaraj).

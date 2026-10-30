@@ -4,6 +4,7 @@ import { Photo } from "../components/Photo";
 import { SearchBar } from "../components/SearchBar";
 import { Title } from "../components/Title";
 import { content, fill, primaryProperty, site } from "../lib/site";
+import { withBase } from "../lib/base";
 
 export default function HomePage() {
   const { hero, closing } = content;
@@ -36,7 +37,7 @@ export default function HomePage() {
           <h2 className="h2">
             <Title text={fill(closing.title)} />
           </h2>
-          <a className="button" href={`/stay/${primaryProperty.slug}/`}>
+          <a className="button" href={withBase(`/stay/${primaryProperty.slug}/`)}>
             {closing.cta}
           </a>
         </section>

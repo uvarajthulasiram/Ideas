@@ -11,6 +11,7 @@ import { ApiError, postCheckout, postQuote } from "../lib/api";
 import { shortDate, plural, type Locale } from "../lib/format";
 import { readStayParams } from "./BookingWidget";
 import { QuoteLines } from "./QuoteLines";
+import { BOOKING_PREVIEW, withBase } from "../lib/base";
 
 type TurnstileApi = {
   render: (el: HTMLElement, o: { sitekey: string; action: string; callback: (t: string) => void; "expired-callback": () => void }) => string;
@@ -49,6 +50,10 @@ export function BookingForm({ property, l, holdMinutes, policies, tripHeader }: 
 
   useEffect(() => {
     if (!stay) return;
+    if (BOOKING_PREVIEW) {
+      setQuoteError("This is a preview: booking isn't connected yet.");
+      return;
+    }
     if (!stay.checkIn || !stay.checkOut) {
       setQuoteError("Choose your dates first.");
       return;
@@ -133,7 +138,7 @@ export function BookingForm({ property, l, holdMinutes, policies, tripHeader }: 
 
   return (
     <div className="booking">
-      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="afterInteractive" onReady={renderTurnstile} />
+      {!BOOKING_PREVIEW && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="afterInteractive" onReady={renderTurnstile} />}
       <form className="booking__form" onSubmit={submit} noValidate>
         <div className="stack" style={{ gap: 8 }}>
           <h1 className="h2">Almost there</h1>
@@ -174,7 +179,7 @@ export function BookingForm({ property, l, holdMinutes, policies, tripHeader }: 
           <label className="check">
             <input id="f-agreed" name="agreed" type="checkbox" {...invalid("agreed")} />
             <span>
-              I agree to the <a href="/house-rules/">house rules</a>, <a href="/cancellation/">cancellation policy</a> and <a href="/terms/">booking terms</a>.
+              I agree to the <a href={withBase("/house-rules/")}>house rules</a>, <a href={withBase("/cancellation/")}>cancellation policy</a> and <a href={withBase("/terms/")}>booking terms</a>.
             </span>
           </label>
           {err("agreed")}
@@ -221,7 +226,7 @@ export function BookingForm({ property, l, holdMinutes, policies, tripHeader }: 
             {quote && <QuoteLines quote={quote} l={l} />}
             {quoteError && (
               <p className="status status--error">
-                {quoteError} <a href={`/stay/${property.slug}/`}>Choose dates</a>
+                {quoteError} <a href={withBase(`/stay/${property.slug}/`)}>Choose dates</a>
               </p>
             )}
             {!quote && !quoteError && <p className="status muted">Loading your trip…</p>}

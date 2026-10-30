@@ -2,6 +2,8 @@
 // pages): headings, paragraphs, lists, **bold**, *italic*, [links](url) and
 // HTML comments (dropped). All text is escaped; no raw HTML passes through.
 
+import { withBase } from "./base";
+
 export interface MarkdownSection {
   /** The text of a "## " heading. */
   heading: string;
@@ -14,7 +16,7 @@ const escape = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").rep
 function inline(text: string): string {
   return escape(text)
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label: string, href: string) => {
-      const safe = /^(https?:|mailto:|\/|#)/.test(href) ? href : "#";
+      const safe = /^(https?:|mailto:|\/|#)/.test(href) ? withBase(href) : "#";
       return `<a href="${safe}">${label}</a>`;
     })
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")

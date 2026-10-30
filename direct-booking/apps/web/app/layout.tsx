@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { CSSProperties, ReactNode } from "react";
 import { site } from "../lib/site";
 import "./globals.css";
+import { withBase } from "../lib/base";
 
 export const metadata: Metadata = {
   title: site.name,
@@ -16,7 +17,7 @@ const brandVars = Object.fromEntries(Object.entries(site.brand.tokens).map(([nam
 
 // Self-hosted fonts (copied to /fonts/ by scripts/select-site.mjs).
 const fontFaces = site.brand.fonts
-  .map((f) => `@font-face{font-family:"${f.family}";src:url("/fonts/${f.file}") format("woff2");font-style:${f.style};font-weight:${f.weight};font-display:swap}`)
+  .map((f) => `@font-face{font-family:"${f.family}";src:url("${withBase(`/fonts/${f.file}`)}") format("woff2");font-style:${f.style};font-weight:${f.weight};font-display:swap}`)
   .join("");
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {site.brand.fonts
           .filter((f) => f.preload)
           .map((f) => (
-            <link key={f.file} rel="preload" href={`/fonts/${f.file}`} as="font" type="font/woff2" crossOrigin="" />
+            <link key={f.file} rel="preload" href={withBase(`/fonts/${f.file}`)} as="font" type="font/woff2" crossOrigin="" />
           ))}
         <style dangerouslySetInnerHTML={{ __html: fontFaces }} />
       </head>

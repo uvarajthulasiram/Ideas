@@ -5,6 +5,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { addDays, todayIn } from "@direct-booking/core";
+import { withBase } from "../lib/base";
 
 interface Props {
   properties: { slug: string; name: string; maxGuests: number }[];
@@ -26,7 +27,7 @@ export function SearchBar({ properties, timezone, note }: Props) {
     const q = new URLSearchParams({ guests: String(guests) });
     if (checkIn) q.set("checkIn", checkIn);
     if (checkIn && checkOut > checkIn) q.set("checkOut", checkOut);
-    window.location.assign(`/stay/${slug}/?${q}`);
+    window.location.assign(withBase(`/stay/${slug}/?${q}`));
   }
 
   return (

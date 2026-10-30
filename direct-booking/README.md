@@ -50,3 +50,13 @@ Copy `sites/nest-retreat/` to `sites/<new-id>/`, edit `site.ts` and `cloudflare.
 ## Notes
 
 - npm 10.9 crashes (`Cannot read properties of null (reading 'edgesOut')`) when it builds the lockfile from scratch, on an optional peer chain under vite. With the committed `package-lock.json`, a normal `npm install` works. If you ever regenerate the lockfile: `npm install --legacy-peer-deps`, then `npm install`.
+
+## GitHub Pages preview
+
+A static preview (no booking: the calendar and checkout say "booking isn't connected yet") is published from the Ideas repo's `main` branch:
+
+```sh
+SITE_ID=nest-retreat node scripts/build-pages-preview.mjs ../nest-retreat-site /Ideas/nest-retreat-site
+```
+
+It sets a base path for the subfolder and `NEXT_PUBLIC_BOOKING_PREVIEW=1`. The repo root needs a `.nojekyll` file, or GitHub Pages drops the `_next` folder. Rebuild and commit `nest-retreat-site/` after site changes; never edit it by hand.

@@ -1,0 +1,44 @@
+1:"$Sreact.fragment"
+2:"/Ideas/nest-retreat-site/_next/static/chunks/0umf92h1sb77c.js"
+3:I[39756,["$2"],"default"]
+4:I[37457,["$2"],"default"]
+b:"/Ideas/nest-retreat-site/_next/static/chunks/2n5qeheznvl4u.js"
+c:I[22016,["$2","$b"],""]
+12:"ViewportBoundary"
+13:I[97367,["$2"],"$12"]
+14:"MetadataBoundary"
+15:I[97367,["$2"],"$14"]
+16:"$Sreact.suspense"
+:HL["/Ideas/nest-retreat-site/_next/static/chunks/31-6k7o64tl8u.css","style"]
+:HL["/Ideas/nest-retreat-site/fonts/hanken-grotesk-latin.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/Ideas/nest-retreat-site/fonts/newsreader-latin.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+6:X
+9:X
+9:C
+d:T70a,<p>These terms apply to stays at The Nest Retreat booked on this website. &quot;We&quot; means Allie, the host. &quot;You&quot; means the guest who makes the booking.</p>
+<h2>Your booking</h2>
+<ul><li>Your booking is confirmed when payment succeeds and you receive our confirmation email.</li><li>While you pay, your dates are held for 30 minutes. If payment isn't completed in that time, the dates are released.</li><li>Prices are in USD and include the taxes shown at checkout. The price you see before paying is the price you pay.</li></ul>
+<h2>Payment</h2>
+<ul><li>You pay 50% when you book and the rest 30 days before you arrive. Arriving within 30 days? You pay in full when you book.</li><li>Payments are processed by Stripe. When you pay a deposit, your card is saved with Stripe so the balance can be charged on the due date. We never see or store your card number.</li><li>If the balance can't be charged, we'll email you a link to pay it. [TODO(host): what happens if it stays unpaid, e.g. after how many days the booking may be cancelled under the cancellation policy.]</li></ul>
+<h2>Cancellations</h2>
+<p>Cancellations and refunds follow our <a href="/Ideas/nest-retreat-site/cancellation/">cancellation policy</a>.</p>
+<h2>Your stay</h2>
+<ul><li>Up to 4 guests. Check-in from 4 PM, check-out by 11 AM.</li><li>You agree to follow the <a href="/Ideas/nest-retreat-site/house-rules/">house rules</a>.</li><li>You're responsible for damage caused during your stay beyond normal wear. [TODO(host): how damage is handled.]</li></ul>
+<h2>Changes and contact</h2>
+<p>To change dates or guests, write to hello@example.com. Changes depend on availability and may change the price.</p>
+<p>[TODO(host): governing law (Washington State?) and anything Allie's insurer or accountant requires here.]</p>a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[[["$","header",null,{"className":"site-header","children":[["$","a",null,{"className":"skip-link","href":"#main","children":"Skip to content"}],["$","div",null,{"className":"wrap site-header__inner","children":[["$","$Lc",null,{"className":"brand","href":"/","children":"The Nest Retreat"}],["$","nav",null,{"aria-label":"Main","className":"site-nav","children":[[["$","$Lc","/stay/the-nest/",{"href":"/stay/the-nest/","children":"The cottage"}],["$","$Lc","/#story",{"href":"/#story","children":"The story"}],["$","$Lc","/#guide",{"href":"/#guide","children":"Allie's guide"}],["$","$Lc","/#questions",{"href":"/#questions","children":"Questions"}]],["$","$Lc",null,{"className":"button button--small","href":"/stay/the-nest/","children":"Book your stay"}]]}]]}]]}],["$","main",null,{"id":"main","children":[["$","div",null,{"className":"wrap page-head","children":[["$","h1",null,{"className":"h2","children":"Booking terms"}],["$","p",null,{"className":"notice","role":"note","children":"Draft: this page is still being reviewed and may change before bookings open."}]]}],["$","div",null,{"className":"wrap prose","dangerouslySetInnerHTML":{"__html":"$d"}}]]}],"$Le"],["$Lf"],"$L10"]}],"p":"$@11","v":null,"s":"$6"}}]]
+7:[["children",{"s":{"n":"policy","t":"d","k":"terms","s":["admin","book","booking","stay"]},"h":65632,"d":{"r":["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]}],"p":"$@8","v":"$9","s":"$6"},"c":"$Qa"}]]
+0:{"t":{"t":{"s":"","h":131152,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/Ideas/nest-retreat-site/_next/static/chunks/31-6k7o64tl8u.css","precedence":"next"}],["$","script","script-0",{"src":"/Ideas/nest-retreat-site/_next/static/chunks/0umf92h1sb77c.js","async":true}]],["$","html",null,{"lang":"en-US","style":{"--surface":"#f4f2ee","--surface-raised":"#fbfaf7","--surface-sunk":"#e8e5df","--ink":"#22313a","--ink-muted":"#5a6267","--hairline":"#d3cfc8","--driftwood":"#a07c5b","--driftwood-deep":"#6f5038","--seaglass":"#9fbcae","--action":"#3f6657","--on-action":"#ffffff","--sound":"#2f4652","--on-sound":"#f4f2ee","--ember":"#a34a22","--serif":"\"Newsreader\", Georgia, serif","--sans":"\"Hanken Grotesk\", system-ui, sans-serif"},"children":[["$","head",null,{"children":[[["$","link","hanken-grotesk-latin.woff2",{"rel":"preload","href":"/Ideas/nest-retreat-site/fonts/hanken-grotesk-latin.woff2","as":"font","type":"font/woff2","crossOrigin":""}],["$","link","newsreader-latin.woff2",{"rel":"preload","href":"/Ideas/nest-retreat-site/fonts/newsreader-latin.woff2","as":"font","type":"font/woff2","crossOrigin":""}]],["$","style",null,{"dangerouslySetInnerHTML":{"__html":"@font-face{font-family:\"Hanken Grotesk\";src:url(\"/Ideas/nest-retreat-site/fonts/hanken-grotesk-latin.woff2\") format(\"woff2\");font-style:normal;font-weight:400 600;font-display:swap}@font-face{font-family:\"Newsreader\";src:url(\"/Ideas/nest-retreat-site/fonts/newsreader-latin.woff2\") format(\"woff2\");font-style:normal;font-weight:400;font-display:swap}@font-face{font-family:\"Newsreader\";src:url(\"/Ideas/nest-retreat-site/fonts/newsreader-italic-latin.woff2\") format(\"woff2\");font-style:italic;font-weight:400;font-display:swap}"}}]]}],["$","body",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}],"p":"$@5","v":null,"s":"$6"},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f4f2ee"}]]}],["$","$L15",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$16",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Booking terms · The Nest Retreat"}],["$","meta","1",{"name":"robots","content":"noindex, nofollow"}]]}]}],null]}],null]}],"p":"$@17","v":null,"s":"$6"}},"a":"$@18","u":"$@19","b":"ygHPQ-JK2Ptiq70TXTJPw"}
+1a:I[97367,["$2"],"OutletBoundary"]
+e:["$","footer",null,{"className":"site-footer","children":["$","div",null,{"className":"wrap site-footer__inner","children":[["$","div",null,{"className":"stack","style":{"gap":4},"children":[["$","span",null,{"className":"brand","style":{"fontSize":20},"children":"The Nest Retreat"}],[["$","span","nest-retreat",{"children":["Seattle STR registration"," ","STR-OPLI-26-007039"]}]],["$","span",null,{"children":[["$","a",null,{"href":"mailto:hello@example.com","children":"hello@example.com"}],""]}]]}],["$","nav",null,{"aria-label":"Policies","className":"site-footer__links","children":[["$","$Lc","/house-rules/",{"href":"/house-rules/","children":"House rules"}],["$","$Lc","/cancellation/",{"href":"/cancellation/","children":"Cancellation"}],["$","$Lc","/terms/",{"href":"/terms/","children":"Booking terms"}],["$","$Lc","/privacy/",{"href":"/privacy/","children":"Privacy"}]]}]]}]}]
+f:["$","script","script-0",{"src":"/Ideas/nest-retreat-site/_next/static/chunks/2n5qeheznvl4u.js","async":true}]
+10:["$","$L1a",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@1b"}]}]
+6:300
+1b:null
+19:true
+6:C
+18:0
+8:"$undefined"
+5:"$undefined"
+17:"$undefined"
+11:"$undefined"

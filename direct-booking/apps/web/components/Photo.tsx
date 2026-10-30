@@ -1,4 +1,5 @@
 import { photo as lookup } from "../lib/site";
+import { withBase } from "../lib/base";
 
 interface Props {
   name: string;
@@ -13,7 +14,7 @@ interface Props {
   className?: string;
 }
 
-const srcset = (name: string, widths: number[], ext: string) => widths.map((w) => `/photos/${name}-${w}.${ext} ${w}w`).join(", ");
+const srcset = (name: string, widths: number[], ext: string) => widths.map((w) => `${withBase(`/photos/${name}-${w}.${ext}`)} ${w}w`).join(", ");
 
 export function Photo({ name, sizes, variant = "wide", caption, priority, decorative, className }: Props) {
   const p = lookup(name);
@@ -22,7 +23,7 @@ export function Photo({ name, sizes, variant = "wide", caption, priority, decora
     <picture>
       <source type="image/webp" srcSet={srcset(p.name, p.widths, "webp")} sizes={sizes} />
       <img
-        src={`/photos/${p.name}-${largest}.webp`}
+        src={withBase(`/photos/${p.name}-${largest}.webp`)}
         alt={decorative ? "" : p.alt}
         width={p.width}
         height={p.height}
