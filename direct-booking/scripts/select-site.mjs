@@ -51,7 +51,7 @@ const deploy = readJson(join(sitesDir, siteId, "cloudflare.json"));
 const wrangler = {
   ...base,
   name: deploy.workerName,
-  vars: { ...base.vars, SITE_ID: siteId },
+  vars: { ...base.vars, ...deploy.vars, SITE_ID: siteId },
   d1_databases: base.d1_databases.map((db) => ({
     ...db,
     database_name: deploy.d1.databaseName,
