@@ -20,7 +20,6 @@ export function Photo({ name, sizes, variant = "wide", caption, priority, decora
   const largest = p.widths.at(-1)!;
   const img = (
     <picture>
-      <source type="image/avif" srcSet={srcset(p.name, p.widths, "avif")} sizes={sizes} />
       <source type="image/webp" srcSet={srcset(p.name, p.widths, "webp")} sizes={sizes} />
       <img
         src={`/photos/${p.name}-${largest}.webp`}

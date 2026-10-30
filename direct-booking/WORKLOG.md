@@ -92,3 +92,10 @@ Uvaraj asked for every phase in one go, with stubs for missing inputs, and was a
 **Would do differently**
 
 - Prototype the playback model (scroll or autoplay) with the host on a real phone before polishing scenes.
+
+## 2026-10-30 · Fix: hero photo blank · about 0.3 h
+
+- Cause: the full-width AVIF files made by macOS `sips` (1126 px; anything above about 800 px) decode as fully transparent in Chromium, and browsers chose that file for the hero on desktops and high-density phones. Smaller sizes and every WebP were fine.
+- Fix: dropped AVIF; photos are WebP at 480, 800 and 1126 px from a flattened source (`scripts/make-photos.mjs`). The hero stays `living-window-wall`.
+- Guard: `scripts/check-story.mjs` now checks that every photo on the home and cottage pages actually paints, at three sizes. Verified in Chromium and WebKit.
+- Would do differently: check decoded pixels, not just HTTP 200s, when generating images with a new tool.

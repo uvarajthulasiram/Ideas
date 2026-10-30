@@ -18,12 +18,21 @@ const fails = [];
 const check = (ok, msg) => { console.log(`${ok ? "✓" : "✗"} ${msg}`); if (!ok) fails.push(msg); };
 
 for (const [w, h] of [[390, 844], [375, 667], [1280, 900]]) {
-  const page = await browser.newPage({ viewport: { width: w, height: h } });
+  const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: w < 500 ? 3 : 1 });
   const errors = []; page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(base + "/", { waitUntil: "networkidle" });
   const geo = await page.evaluate(() => ({ story: document.getElementById("story").getBoundingClientRect().top + scrollY, page: document.documentElement.scrollHeight, ih: innerHeight }));
   console.log(`${w}×${h}: story starts at ${(geo.story / geo.ih).toFixed(2)} screens; page is ${(geo.page / geo.ih).toFixed(1)} screens`);
   check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${w}×${h}: no horizontal scroll`);
+  // Every photo on the page must actually paint (a blank AVIF once hid the hero).
+  for (const path of ["/", "/stay/the-nest/"]) {
+    if (path !== "/") await page.goto(base + path, { waitUntil: "networkidle" });
+    const blank = await page.evaluate(async () => { const out = []; for (const i of document.querySelectorAll(".photo img")) { i.loading = "eager"; await i.decode().catch(() => {});
+      const c = document.createElement("canvas"); c.width = 20; c.height = 15; const g = c.getContext("2d"); g.drawImage(i, 0, 0, 20, 15); const d = g.getImageData(0, 0, 20, 15).data; let a = 0; for (let k = 3; k < d.length; k += 4) a += d[k];
+      if (!i.naturalWidth || a / 300 < 250) out.push(i.currentSrc.split("/").pop()); } return out; });
+    check(blank.length === 0, `${w}×${h} ${path}: every photo paints${blank.length ? ` (blank: ${blank.join(", ")})` : ""}`);
+  }
+  await page.goto(base + "/", { waitUntil: "networkidle" });
 
   const label = () => page.evaluate(() => document.querySelector(".film-play").getAttribute("aria-label"));
   check((await label()) === "Play the story", `${w}×${h}: not playing before it is on screen`);
