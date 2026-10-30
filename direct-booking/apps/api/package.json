@@ -1,0 +1,26 @@
+{
+  "name": "@direct-booking/api",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker: availability, quotes, checkout, Stripe webhook, iCal export, cron jobs.",
+  "scripts": {
+    "select-site": "node ../../scripts/select-site.mjs",
+    "types": "npm run select-site && wrangler types",
+    "predev": "npm run types",
+    "dev": "wrangler dev",
+    "db:migrate:local": "npm run select-site && wrangler d1 migrations apply DB --local",
+    "pretest": "npm run types",
+    "test": "vitest run",
+    "pretypecheck": "npm run types",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@direct-booking/core": "*",
+    "@direct-booking/sites": "*"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.2",
+    "vitest": "4.1.11",
+    "wrangler": "4.151.0"
+  }
+}

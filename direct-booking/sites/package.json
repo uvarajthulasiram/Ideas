@@ -1,0 +1,15 @@
+{
+  "name": "@direct-booking/sites",
+  "private": true,
+  "type": "module",
+  "description": "One folder per host. Everything specific to a host lives here, never in apps/.",
+  "exports": {
+    "./selected": "./selected.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@direct-booking/core": "*"
+  }
+}

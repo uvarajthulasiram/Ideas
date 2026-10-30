@@ -1,0 +1,9 @@
+{
+  "//": "Per-site Worker settings, merged into apps/api/wrangler.jsonc by scripts/select-site.mjs. TODO(host): set d1.databaseId after `wrangler d1 create nest-retreat` in Allie's Cloudflare account (Phase 8), and routes once the domain is bought.",
+  "workerName": "nest-retreat-api",
+  "d1": {
+    "databaseName": "nest-retreat",
+    "databaseId": "00000000-0000-0000-0000-000000000000"
+  },
+  "routes": []
+}

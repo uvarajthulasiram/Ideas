@@ -1,0 +1,19 @@
+{
+  "name": "@direct-booking/core",
+  "private": true,
+  "type": "module",
+  "description": "Shared types, site config schema, date and money helpers, quote maths.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "vitest": "4.1.11"
+  }
+}

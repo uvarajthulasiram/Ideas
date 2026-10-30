@@ -1,0 +1,28 @@
+{
+  "name": "@direct-booking/web",
+  "private": true,
+  "type": "module",
+  "description": "Guest-facing site: Next.js static export for Cloudflare Pages, built for one site in sites/.",
+  "scripts": {
+    "select-site": "node ../../scripts/select-site.mjs",
+    "predev": "npm run select-site",
+    "dev": "next dev",
+    "prebuild": "npm run select-site",
+    "build": "next build",
+    "preview": "npx --no-install wrangler pages dev out",
+    "pretypecheck": "npm run select-site",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@direct-booking/core": "*",
+    "@direct-booking/sites": "*",
+    "next": "16.4.1",
+    "react": "19.2.9",
+    "react-dom": "19.2.9"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7"
+  }
+}

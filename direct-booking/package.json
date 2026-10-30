@@ -1,0 +1,26 @@
+{
+  "name": "direct-booking",
+  "private": true,
+  "description": "Reusable direct booking engine for short-term rentals. One codebase, one folder per host in sites/.",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "packages/*",
+    "sites",
+    "apps/*"
+  ],
+  "scripts": {
+    "site": "node scripts/select-site.mjs",
+    "dev:api": "npm run dev -w @direct-booking/api",
+    "dev:web": "npm run dev -w @direct-booking/web",
+    "build:web": "npm run build -w @direct-booking/web",
+    "db:migrate:local": "npm run db:migrate:local -w @direct-booking/api",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "todos": "grep -rn \"TODO(host)\" sites --include=*.ts --include=*.json --include=*.md"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}
