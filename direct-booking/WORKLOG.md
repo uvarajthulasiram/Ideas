@@ -31,3 +31,40 @@ One entry per session. Uvaraj copies these into the work log in the planning doc
 **Would do differently**
 
 - Check the pool package's npm deprecation notice before the first install, not after.
+
+## 2026-10-29 to 2026-10-30 · Phases 2 to 8 and the story storyboard · about 3 h
+
+Uvaraj asked for every phase in one go, with stubs for missing inputs, and was away for most of it ("go with your recommendations"). Each phase was committed separately on `direct-booking`.
+
+**Done**
+
+- **Phase 2, calendars:** a small RFC 5545 parser and writer in core (line folding, DATE and UTC times mapped to the property's timezone, exclusive end, cancelled events skipped) with synthetic Airbnb and VRBO fixtures. Import every 15 minutes; a failed feed keeps its blocks. Per-property tokened export feed of direct bookings, live holds and manual blocks only.
+- **Phase 3, pricing:** `quoteStay()` in core is the only price maths (nightly rates, direct discount, cleaning, tax lines, deposit split, dated cancellation tiers). Daily rates fetch with a fixture source; PriceLabs is a stub that refuses to run until its details are known. `/api/availability`, `/api/quote`.
+- **Phase 4, booking UI:** the mockup ported into typed site content (`sites/nest-retreat/content`) with `{{placeholders}}` filled from config; Allie's photos as AVIF/WebP at three widths; a keyboard date-range calendar; a live quote. Client code never imports the site config (the private alert email stays out of the browser).
+- **Phase 5, checkout:** Turnstile (Cloudflare's test keys), a calendar refresh, a re-quote, an atomic hold (overlap check inside the INSERT), and Stripe Checkout in test mode (live keys refused). The webhook is idempotent: host alert first, then guest confirmation, and a retry sends only what failed. A late payment after the hold expired, with the dates taken, is refunded automatically. Guest pages for details, confirmation and cancellation. `PAYMENTS=fake` gives a local test checkout (localhost only). `scripts/e2e-booking.mjs` books end to end in a browser: passed.
+- **Phase 6, deposit, balance, cancellation:** daily off-session balance charge (claimed, with idempotency keys); on a decline, a 24-hour payment link to the guest and an alert to the host. Admin API behind Cloudflare Access (JWT checked in the Worker) with cancellation and refund per tier (balance payment refunded first), manual blocks and sync now, plus a small `/admin` page.
+- **Phase 7, policies:** drafts of the house rules, cancellation, terms and privacy pages, every figure from config, with a visible draft notice and `TODO(host)` for Allie's decisions. Fonts are now self-hosted (OFL), so pages make no third-party requests. `check:copy` enforces the copy rules.
+- **Phase 8, launch prep:** `launch-check` (fails on 40 open items today), a `LAUNCH.md` runbook, and an `ical-urls` helper. No deploys, purchases or live keys.
+- **Story (scroll-story-site skill):** interview done; `sites/nest-retreat/brand.json` written; contrast checked (every pair the site uses passes AA). Three concepts and a sketch storyboard published: https://claude.ai/artifact/3L1ZAs6KPJcjo4vUhkVR6k. **Stopped at the skill's storyboard gate for approval.**
+- Tests: 64 core, 58 Worker, 5 web; typecheck clean.
+
+**Decisions (approved, or "go with your recommendations")**
+
+- New dependencies: stripe 23.0.0, gsap 3.15.0 (approved, not installed until the story build), playwright 1.64.1 (dev). Images use macOS `sips` and `cwebp`, so no image package was added.
+- The story text's "like TV being tucked into a nest" was corrected to "like being tucked into a nest" (approved).
+- Site copy is typed content rather than one Markdown file per section (FAQ and policies are Markdown), so a new host can reorder sections without touching `apps/`.
+- Added beyond the plan's three emails: a guest cancellation notice and the late-payment refund notices.
+- Same-day bookings are refused (check-in must be after today, in the property's timezone).
+- Cards only at Checkout (holds and off-session balances need instant card payments).
+- The "A day at the Nest" timeline photos were dropped (uneven layout); the guestbook section stays out until there are real notes.
+
+**Open (needs Uvaraj or Allie)**
+
+- Storyboard marks or "go with your picks".
+- Everything `npm run todos` and `npm run launch-check` list, notably PriceLabs endpoint details, iCal feeds, Stripe test keys, the domain, taxes and house rules.
+- `npm audit`: dev-tool findings only, as before.
+
+**Would do differently**
+
+- Write the copy check and launch gate first; both caught real issues once they existed.
+- Set the browser screenshot check up at the start of the UI phase, not after the first build.

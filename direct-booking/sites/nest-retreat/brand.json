@@ -1,0 +1,54 @@
+{
+  "name": "The Nest Retreat",
+  "tagline": "A small home with a big view of the sky",
+  "site": null,
+  "locale": "en-US",
+  "timezone": "America/Los_Angeles",
+  "market": "Travelers visiting Seattle from across the US and abroad; couples and small families",
+  "tokensFile": "./site.ts",
+  "colors": {
+    "background": "#f4f2ee",
+    "surface": "#fbfaf7",
+    "text": "#22313a",
+    "textMuted": "#5a6267",
+    "primary": "#3f6657",
+    "onPrimary": "#ffffff",
+    "accent": "#a07c5b",
+    "onAccent": "#22313a",
+    "primaryDeep": "#2f4652",
+    "accentSoft": "#9fbcae",
+    "line": "#d3cfc8"
+  },
+  "colorRules": {
+    "fillOnly": ["accent", "accentSoft"],
+    "textOn": { "primary": ["background", "surface"] },
+    "reserved": { "note": "error and warning only, never scenery", "ember": "#a34a22" }
+  },
+  "sceneTones": {
+    "sky": "#dfe7e6",
+    "skyDusk": "#e9d3bc",
+    "ground": "#e8e5df",
+    "shadow": "#2f4652"
+  },
+  "fonts": {
+    "display": "\"Newsreader\", Georgia, serif",
+    "body": "\"Hanken Grotesk\", system-ui, sans-serif",
+    "source": "self-hosted"
+  },
+  "logo": {
+    "svg": null,
+    "note": "No logo exists yet; the wordmark is the site name set in Newsreader. Open question in the storyboard."
+  },
+  "voice": {
+    "tone": ["calm", "warm", "unhurried", "plain-spoken"],
+    "humour": "gentle and visual only; never about prices, payments, safety or trust",
+    "copyRules": ["No em dashes", "US spelling", "Sentence case", "Never ask Airbnb or VRBO guests to book direct", "No competitor names"]
+  },
+  "proof": {
+    "claims": [
+      { "text": "2 bedrooms, 2 private baths, sleeps 4", "page": "/stay/the-nest/" },
+      { "text": "Lowman Beach is just under a mile's walk", "page": "/stay/the-nest/" },
+      { "text": "You see the full price, taxes included, before you pay", "page": "/terms/" }
+    ]
+  }
+}
