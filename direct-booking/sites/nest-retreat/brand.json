@@ -20,9 +20,20 @@
     "line": "#d3cfc8"
   },
   "colorRules": {
-    "fillOnly": ["accent", "accentSoft"],
-    "textOn": { "primary": ["background", "surface"] },
-    "reserved": { "note": "error and warning only, never scenery", "ember": "#a34a22" }
+    "fillOnly": [
+      "accent",
+      "accentSoft"
+    ],
+    "textOn": {
+      "primary": [
+        "background",
+        "surface"
+      ]
+    },
+    "reserved": {
+      "note": "error and warning only, never scenery",
+      "ember": "#a34a22"
+    }
   },
   "sceneTones": {
     "sky": "#dfe7e6",
@@ -40,15 +51,45 @@
     "note": "No logo exists yet; the wordmark is the site name set in Newsreader. Open question in the storyboard."
   },
   "voice": {
-    "tone": ["calm", "warm", "unhurried", "plain-spoken"],
+    "tone": [
+      "calm",
+      "warm",
+      "unhurried",
+      "plain-spoken"
+    ],
     "humour": "gentle and visual only; never about prices, payments, safety or trust",
-    "copyRules": ["No em dashes", "US spelling", "Sentence case", "Never ask Airbnb or VRBO guests to book direct", "No competitor names"]
+    "copyRules": [
+      "No em dashes",
+      "US spelling",
+      "Sentence case",
+      "Never ask Airbnb or VRBO guests to book direct",
+      "No competitor names"
+    ]
   },
   "proof": {
     "claims": [
-      { "text": "2 bedrooms, 2 private baths, sleeps 4", "page": "/stay/the-nest/" },
-      { "text": "Lowman Beach is just under a mile's walk", "page": "/stay/the-nest/" },
-      { "text": "You see the full price, taxes included, before you pay", "page": "/terms/" }
+      {
+        "text": "2 bedrooms, 2 private baths, sleeps 4",
+        "page": "/stay/the-nest/"
+      },
+      {
+        "text": "Lowman Beach is just under a mile's walk",
+        "page": "/stay/the-nest/"
+      },
+      {
+        "text": "You see the full price, taxes included, before you pay",
+        "page": "/terms/"
+      },
+      {
+        "text": "Minutes from beaches, caf\u00e9s, restaurants and downtown Seattle",
+        "page": "/stay/the-nest/",
+        "source": "Approved by Uvaraj, 2026-10-30"
+      },
+      {
+        "text": "Seattle, WA 98136",
+        "page": "/stay/the-nest/",
+        "source": "site.ts location"
+      }
     ]
   }
 }

@@ -76,6 +76,7 @@ export function policyFacts(site: SiteConfig, property: PropertyConfig): Record<
     cancellation: cancellationSentence(property.cancellation),
     cancellationTiers: cancellationTiersMarkdown(property.cancellation),
     currency: site.currency,
+    location: property.location ? `${property.location.city}, ${property.location.region} ${property.location.postalCode}` : "",
     licence: property.licence ? `${property.licence.label} ${property.licence.number}` : "",
   };
 }

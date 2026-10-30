@@ -92,6 +92,10 @@ export const PropertySchema = z
     /** null until the listing is connected to PriceLabs. A night without a rate can't be booked. */
     pricelabsListingId: z.string().min(1).nullable(),
     photos: z.array(PhotoSchema).default([]),
+    /** Public location (never the street address, which guests get after booking). */
+    location: z
+      .object({ area: z.string().min(1).optional(), city: z.string().min(1), region: z.string().min(1), postalCode: z.string().min(1), country: z.string().length(2) })
+      .optional(),
     /** Registration or licence shown on the property page where the law requires it. */
     licence: z.object({ label: z.string().min(1), number: z.string().min(1) }).optional(),
     ...policyOverrides,

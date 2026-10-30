@@ -93,6 +93,7 @@ export default defineSite({
         { file: "bedroom-garden-doors", alt: "The downstairs queen bedroom with French doors opening onto the patio" },
         { file: "firepit-patio", alt: "Four black Adirondack chairs around a round fire pit in the fenced garden" },
       ],
+      location: { area: "West Seattle", city: "Seattle", region: "WA", postalCode: "98136", country: "US" },
       licence: {
         label: "Seattle STR registration",
         number: "STR-OPLI-26-007039", // TODO(host): confirm; taken from the mockup, and whether it must show on the site

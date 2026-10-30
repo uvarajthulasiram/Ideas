@@ -130,7 +130,7 @@ export default defineContent({
         { icon: "washer", label: "Washer and dryer" },
         { icon: "alarm", label: "Smoke and CO alarms" },
       ],
-      where: "A quiet residential street in West Seattle, just under a mile from Lowman Beach. The exact address is sent after you book.",
+      where: "A quiet residential street in West Seattle ({{location}}), just under a mile from Lowman Beach, with beaches, cafés, restaurants and downtown Seattle minutes away. The exact address is sent after you book.",
       goodToKnow: [
         "Check-in from {{checkInTime}} · Check-out by {{checkOutTime}} · Self check-in",
         // TODO(host): house rules summary, e.g. no parties, quiet hours, pets policy
