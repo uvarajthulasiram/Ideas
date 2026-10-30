@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { CSSProperties, ReactNode } from "react";
-import { site } from "@direct-booking/sites/selected";
+import { site } from "../lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+export const viewport: Viewport = { themeColor: site.brand.tokens.surface };
+
 // The site's brand tokens become CSS custom properties, e.g. --ink, --action.
-const brandVars = Object.fromEntries(
-  Object.entries(site.brand.tokens).map(([name, value]) => [`--${name}`, value]),
-) as CSSProperties;
+const brandVars = Object.fromEntries(Object.entries(site.brand.tokens).map(([name, value]) => [`--${name}`, value])) as CSSProperties;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

@@ -1,0 +1,56 @@
+{
+  "bedroom-garden-doors": {
+    "widths": [
+      480,
+      800,
+      1126
+    ],
+    "width": 1126,
+    "height": 749
+  },
+  "bedroom-upstairs": {
+    "widths": [
+      480,
+      800,
+      1126
+    ],
+    "width": 1126,
+    "height": 749
+  },
+  "firepit-patio": {
+    "widths": [
+      480,
+      800,
+      1126
+    ],
+    "width": 1126,
+    "height": 749
+  },
+  "kitchen-island": {
+    "widths": [
+      480,
+      800,
+      1126
+    ],
+    "width": 1126,
+    "height": 749
+  },
+  "living-kitchen-open-plan": {
+    "widths": [
+      480,
+      800,
+      1126
+    ],
+    "width": 1126,
+    "height": 749
+  },
+  "living-window-wall": {
+    "widths": [
+      480,
+      800,
+      1126
+    ],
+    "width": 1126,
+    "height": 749
+  }
+}

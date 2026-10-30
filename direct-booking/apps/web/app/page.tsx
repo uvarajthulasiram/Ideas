@@ -1,25 +1,44 @@
-import Link from "next/link";
-import { site } from "@direct-booking/sites/selected";
+import { HomeSections } from "../components/HomeSections";
+import { Page } from "../components/Page";
+import { Photo } from "../components/Photo";
+import { SearchBar } from "../components/SearchBar";
+import { Title } from "../components/Title";
+import { content, fill, primaryProperty, site } from "../lib/site";
 
-// Scaffold only: proves the static export reads the selected site.
-// The real home page (hero, highlights, FAQ, book button) is ported from the mockup in Phase 4.
 export default function HomePage() {
+  const { hero, closing } = content;
   return (
-    <main className="page">
-      <h1>{site.name}</h1>
-
-      <section id="story" className="slot" aria-label="Story">
-        Story slot: built later with the scroll-story-site skill.
+    <Page>
+      <section className="wrap hero">
+        <p className="eyebrow">{fill(hero.eyebrow)}</p>
+        <h1 className="display">
+          <Title text={fill(hero.title)} />
+        </h1>
+        <p className="lede">{fill(hero.lede)}</p>
+        <div className="rule" aria-hidden="true" />
+        <p className="hero__facts">{fill(hero.facts)}</p>
       </section>
 
-      <h2>{site.properties.length === 1 ? "The stay" : "Stays"}</h2>
-      <ul>
-        {site.properties.map((p) => (
-          <li key={p.id}>
-            <Link href={`/stay/${p.slug}/`}>{p.name}</Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+      <div className="hero-photo">
+        <Photo name={hero.photo.photo} caption={hero.photo.caption} sizes="(min-width: 1360px) 1312px, 100vw" variant="hero" priority />
+      </div>
+
+      <SearchBar
+        properties={site.properties.map((p) => ({ slug: p.slug, name: p.name, maxGuests: p.maxGuests }))}
+        timezone={primaryProperty.timezone}
+        note={fill(content.searchNote)}
+      />
+
+      <HomeSections sections={content.home} />
+
+      <section className="wrap closing">
+        <h2 className="h2">
+          <Title text={fill(closing.title)} />
+        </h2>
+        <a className="button" href={`/stay/${primaryProperty.slug}/`}>
+          {closing.cta}
+        </a>
+      </section>
+    </Page>
   );
 }
