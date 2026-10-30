@@ -4,12 +4,14 @@
   "type": "module",
   "description": "One folder per host. Everything specific to a host lives here, never in apps/.",
   "exports": {
-    "./selected": "./selected.ts"
+    "./selected": "./selected.ts",
+    "./story": "./story.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@direct-booking/core": "*"
+    "@direct-booking/core": "*",
+    "@direct-booking/film": "*"
   }
 }

@@ -30,7 +30,7 @@ export function SearchBar({ properties, timezone, note }: Props) {
   }
 
   return (
-    <section aria-label="Check availability" className="wrap search">
+    <section id="check" aria-label="Check availability" className="wrap search">
       <form className="search__form" onSubmit={submit}>
         {properties.length > 1 && (
           <label className="field">

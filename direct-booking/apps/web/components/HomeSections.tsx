@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { formatTime, type HomeSection } from "@direct-booking/core";
-import { contentFile } from "../lib/content-files";
-import { markdownSections } from "../lib/markdown";
+import story from "@direct-booking/sites/story";
+import { contentFile, contentPath } from "../lib/content-files";
+import { markdownSections, renderMarkdown } from "../lib/markdown";
 import { fill, primaryProperty, site } from "../lib/site";
+import { existsSync } from "node:fs";
 import { Photo } from "./Photo";
+import { StoryFilm } from "./StoryFilm";
 import { Title } from "./Title";
 
 const HALF = "(min-width: 900px) 560px, 100vw";
@@ -35,11 +38,35 @@ function Head({ eyebrow, title, body, id }: { eyebrow: string; title: string; bo
 function Section({ section: s }: { section: HomeSection }) {
   switch (s.type) {
     case "story":
-      // TODO: the scroll story (scroll-story-site skill) mounts here.
+      if (!story) return null;
       return (
-        <section id="story" className="wrap" aria-label="The story">
-          <div className="story-slot">The story of the Nest is coming here.</div>
-        </section>
+        <>
+          <section id="story" className="wrap section story" aria-labelledby="story-title">
+            <div className="story__head">
+              <h2 id="story-title" className="h3">
+                The story of the Nest
+              </h2>
+            </div>
+            <StoryFilm name={site.name} checkHref="#check" skipHref="#after-story" />
+            {/* Without JavaScript: the film's chapters as text. */}
+            <noscript>
+              <ol className="story__transcript">
+                {story.shots.map((s) => (
+                  <li key={s.id}>
+                    <strong>{s.head}</strong> {s.line}
+                  </li>
+                ))}
+              </ol>
+            </noscript>
+            {existsSync(contentPath("story.md")) && (
+              <details className="story__words">
+                <summary>The story in {site.host.name}&apos;s words</summary>
+                <div className="prose story__prose" dangerouslySetInnerHTML={{ __html: renderMarkdown(contentFile("story.md")) }} />
+              </details>
+            )}
+          </section>
+          <div id="after-story" />
+        </>
       );
 
     case "feature":

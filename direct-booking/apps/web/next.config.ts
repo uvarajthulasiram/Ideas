@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   // core and sites are TypeScript source in this monorepo, outside apps/web.
-  transpilePackages: ["@direct-booking/core", "@direct-booking/sites"],
+  transpilePackages: ["@direct-booking/core", "@direct-booking/film", "@direct-booking/sites"],
   turbopack: { root: fileURLToPath(new URL("../..", import.meta.url)) },
 };
 

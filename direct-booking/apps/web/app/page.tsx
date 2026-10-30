@@ -31,14 +31,16 @@ export default function HomePage() {
 
       <HomeSections sections={content.home} />
 
-      <section className="wrap closing">
-        <h2 className="h2">
-          <Title text={fill(closing.title)} />
-        </h2>
-        <a className="button" href={`/stay/${primaryProperty.slug}/`}>
-          {closing.cta}
-        </a>
-      </section>
+      {closing && (
+        <section className="wrap closing">
+          <h2 className="h2">
+            <Title text={fill(closing.title)} />
+          </h2>
+          <a className="button" href={`/stay/${primaryProperty.slug}/`}>
+            {closing.cta}
+          </a>
+        </section>
+      )}
     </Page>
   );
 }

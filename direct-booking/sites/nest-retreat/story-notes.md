@@ -4,7 +4,11 @@ Project notes for the `scroll-story-site` skill. Read first in any later session
 
 ## Current phase
 
-Phase 5 gate: prototype 2 (the autoplay film) is published for approval. Next: Phase 6a (build it in `apps/web`), after approval.
+Phase 6a gate: the film is built into the site (prototype 2 approved 2026-10-30; all nine shots ported at once). Next: Uvaraj and Allie check it on a phone, then Phase 7 checks and hand-off.
+
+Where the code lives: generic helpers in `packages/film`, the Nest's scenes and captions in `sites/nest-retreat/story/`, the player in `apps/web/lib/film-player.ts` and `apps/web/components/StoryFilm.tsx`. Allie's words: `content/story.md`. Checks: `node scripts/check-story.mjs <site-url>`.
+
+Page pass done: "A day at the Nest" and the closing section removed; hero photo 4:3 on phones. GSAP was not needed (the film runs on its own clock).
 
 - Storyboard (approved 2026-10-30, "go with your picks"): https://claude.ai/artifact/3L1ZAs6KPJcjo4vUhkVR6k
 - Prototype (v1 scroll-scrubbed, v2 autoplay film, same link): https://claude.ai/artifact/MmZzwbaQpiEVj54NrMwMtC

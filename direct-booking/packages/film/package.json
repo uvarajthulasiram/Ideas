@@ -1,0 +1,13 @@
+{
+  "name": "@direct-booking/film",
+  "private": true,
+  "type": "module",
+  "description": "Canvas 2D helpers for illustrated story films: camera, shapes, people, cars, trees. Sites draw their own scenes with them.",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

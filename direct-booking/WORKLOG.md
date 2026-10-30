@@ -68,3 +68,27 @@ Uvaraj asked for every phase in one go, with stubs for missing inputs, and was a
 
 - Write the copy check and launch gate first; both caught real issues once they existed.
 - Set the browser screenshot check up at the start of the UI phase, not after the first build.
+
+## 2026-10-30 · Story film built into the site · about 1.5 h
+
+**Done**
+
+- Storyboard approved; prototype 1 (scroll-scrubbed) rejected by Uvaraj and Allie: on a phone the page seemed stuck while scrolling. Prototype 2, an autoplay film with richer art (contrast, foregrounds, an arrival shot with a keypad close-up, a dollhouse cutaway, an aerial map, a real beach, the fire pit at night), approved.
+- Built into the site: `packages/film` (generic canvas helpers), `sites/nest-retreat/story/` (the Nest's nine shots and captions), the player (`apps/web/lib/film-player.ts`, `components/StoryFilm.tsx`). The story entry point (`@direct-booking/sites/story`) never includes the site config.
+- It plays when 55% on screen, pauses when scrolled away or the tab hides, has pause and chapter controls under the picture, "Show as pictures", "Skip the story", and a transcript without JavaScript. Reduced motion: no autoplay.
+- Page pass: "A day at the Nest" and the closing section removed; hero 4:3 on phones; Allie's full text in a "The story in Allie's words" panel; `#check` anchor for the finale's "Check your dates".
+- `scripts/check-story.mjs`: autoplay, scrolling past, pausing, reduced motion, pictures, no horizontal scroll, and frame continuity (649 steps, no jumps) at 390 × 844, 375 × 667 and 1280 × 900. All pass. Home page: 8.6 phone screens.
+
+**Decisions**
+
+- Autoplay film instead of the skill's scroll-scrubbed default (Uvaraj and Allie).
+- GSAP not added: nothing scroll-driven remains.
+
+**Open**
+
+- Allie to confirm the exterior colors, the downstairs layout and the keypad shown in the film.
+- The story starts 1.36 screens down on a 390 px phone (hero, search bar). Less important now the film autoplays in place; revisit after phone feedback.
+
+**Would do differently**
+
+- Prototype the playback model (scroll or autoplay) with the host on a real phone before polishing scenes.

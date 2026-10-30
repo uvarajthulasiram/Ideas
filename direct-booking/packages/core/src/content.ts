@@ -45,7 +45,8 @@ export interface SiteContent {
   hero: { eyebrow: string; title: string; lede: string; facts: string; photo: PhotoRef };
   searchNote: string;
   home: HomeSection[];
-  closing: { title: string; cta: string };
+  /** Closing call to action; leave out when the story finale carries it. */
+  closing?: { title: string; cta: string };
   properties: Record<string, PropertyContent>;
   footerLinks: Link[];
 }

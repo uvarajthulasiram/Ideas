@@ -19,7 +19,8 @@
     "@direct-booking/sites": "*",
     "next": "16.4.1",
     "react": "19.2.9",
-    "react-dom": "19.2.9"
+    "react-dom": "19.2.9",
+    "@direct-booking/film": "*"
   },
   "devDependencies": {
     "@types/node": "22.20.5",

@@ -75,7 +75,8 @@ summary { cursor: pointer; }
 
 /* ---- Photos ---- */
 .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; background: var(--surface-sunk); }
-.photo--hero img { aspect-ratio: 16 / 10; border-radius: 18px; }
+.photo--hero img { aspect-ratio: 4 / 3; border-radius: 18px; }
+@media (min-width: 720px) { .photo--hero img { aspect-ratio: 16 / 10; } }
 @media (min-width: 900px) { .photo--hero img { aspect-ratio: 16 / 9; } }
 .photo--wide img { aspect-ratio: 3 / 2; }
 .photo--square img { aspect-ratio: 4 / 3; }
@@ -104,6 +105,56 @@ summary { cursor: pointer; }
 .field__hint { font-weight: 400; color: var(--ink-muted); }
 .field__error { font-weight: 400; color: var(--ember); }
 .field [aria-invalid="true"] { border-color: var(--ember); }
+
+.button--ghost { background: transparent; color: var(--action); border: 1px solid var(--action); }
+.button--ghost:hover { color: var(--action); background: var(--surface-raised); filter: none; }
+
+/* ---- Story film ---- */
+.story__head { margin-bottom: 12px; }
+.film { max-width: 1104px; margin: 0 auto; }
+.film-stage { position: relative; height: min(76svh, 700px); min-height: 440px; border-radius: 18px; overflow: hidden; background: #cfe1e6; isolation: isolate; }
+@media (min-width: 720px) { .film-stage { height: auto; aspect-ratio: 16 / 10; min-height: 0; } }
+.film-canvas { display: block; width: 100%; height: 100%; }
+.film-cap { position: absolute; left: 12px; right: 12px; bottom: 12px; max-width: 440px; background: rgba(251, 250, 247, 0.96); border-radius: 14px; padding: 10px 14px; box-shadow: 0 8px 26px rgba(34, 49, 58, 0.22); border-top: 3px solid var(--driftwood); transition: opacity 0.35s, transform 0.35s; }
+.film-cap.swap { opacity: 0; transform: translateY(8px); }
+.film-k { margin: 0; font: 600 11px/1.2 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--driftwood-deep); }
+.film-cap h3 { margin: 2px 0 1px; font: 400 22px/1.15 var(--serif); }
+.film-l { margin: 0; color: var(--ink-muted); font-size: 15px; line-height: 22px; }
+.film-end { display: none; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.film-cap.ended .film-end { display: flex; }
+.film-chips { position: absolute; inset: 0; pointer-events: none; }
+.film-chip { position: absolute; transform: translate(-50%, -100%); background: var(--surface-raised); color: var(--ink); border-radius: 999px; padding: 4px 10px 4px 8px; font: 600 13px/1.25 var(--sans); white-space: nowrap; box-shadow: 0 4px 14px rgba(34, 49, 58, 0.22); opacity: 0; display: flex; align-items: center; gap: 6px; }
+.film-chip::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--dot); flex: none; }
+.film-chip small { font-weight: 400; color: var(--ink-muted); font-size: 13px; }
+.film-mark { position: absolute; left: 0; right: 0; top: 9%; display: grid; justify-items: center; gap: 10px; opacity: 0; pointer-events: none; }
+.film-mark span { font: 400 clamp(30px, 8.5vw, 52px)/1 var(--serif); color: var(--ink); }
+.film-mark i { display: block; width: 60px; height: 2px; background: var(--driftwood); transform: scaleX(0); }
+.film-hint { position: absolute; left: 50%; top: 14px; transform: translateX(-50%); margin: 0; background: rgba(34, 49, 58, 0.86); color: var(--paper, #f4f2ee); font: 600 13px/1.3 var(--sans); padding: 8px 14px; border-radius: 999px; white-space: nowrap; opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+.film-hint.on { opacity: 1; }
+.film-start { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(244, 242, 238, 0.35); }
+.film-start[hidden] { display: none; }
+.film-start > div { display: grid; gap: 10px; justify-items: center; background: rgba(251, 250, 247, 0.95); padding: 18px 20px; border-radius: 16px; }
+.film-controls { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.film-play { flex: none; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--action); color: var(--on-action); cursor: pointer; display: grid; place-items: center; }
+.film-play svg { width: 20px; height: 20px; }
+.film-bar { flex: 1; min-width: 0; display: flex; gap: 3px; height: 44px; align-items: center; }
+.film-bar button { flex: var(--w); min-width: 0; height: 44px; border: 0; background: none; padding: 0; cursor: pointer; display: flex; align-items: center; }
+.film-bar button span { display: block; width: 100%; height: 6px; border-radius: 3px; background: var(--surface-sunk); overflow: hidden; }
+.film-bar button span i { display: block; height: 100%; width: 0; background: var(--driftwood); }
+.film-bar button[aria-current="step"] span { height: 8px; }
+.film-time { flex: none; font: 600 13px var(--sans); color: var(--ink-muted); font-variant-numeric: tabular-nums; min-width: 40px; text-align: right; }
+.film-below { display: flex; justify-content: space-between; align-items: center; gap: 4px 12px; flex-wrap: wrap; font-size: 14px; line-height: 20px; color: var(--ink-muted); margin-top: 2px; }
+.film-below button { background: none; border: 0; color: var(--driftwood-deep); font: 600 14px var(--sans); cursor: pointer; min-height: 44px; padding: 0; text-decoration: underline; }
+.film-below a { font-weight: 600; }
+.film-stills { list-style: none; margin: 16px auto 0; padding: 0; max-width: 560px; display: grid; gap: 18px; }
+.film-stills[hidden] { display: none; }
+.film-stills canvas { display: block; width: 100%; aspect-ratio: 4 / 5; border-radius: 14px 14px 0 0; }
+.film-stills div { background: var(--surface-raised); border-radius: 0 0 14px 14px; padding: 10px 14px; }
+.film-stills h3 { margin: 2px 0; font: 400 20px/1.2 var(--serif); }
+.story__words { max-width: 68ch; margin-top: 16px; }
+.story__words summary { font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+.story__prose p { font-family: var(--serif); font-size: 18px; line-height: 1.6; }
+.story__transcript { margin-top: 12px; }
 
 .story-slot { margin-top: clamp(72px, 10vw, 120px); padding: 48px 24px; border: 1px dashed var(--hairline); border-radius: 18px; text-align: center; color: var(--ink-muted); }
 
@@ -216,5 +267,6 @@ legend { padding: 0; margin-bottom: 16px; font-size: 18px; line-height: 26px; fo
 .notice { padding: 16px; border-radius: 10px; background: var(--surface-sunk); font-size: 15px; line-height: 24px; }
 
 @media (prefers-reduced-motion: reduce) {
+  .film-cap, .film-hint { transition: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

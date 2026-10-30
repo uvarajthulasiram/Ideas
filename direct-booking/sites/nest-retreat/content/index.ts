@@ -8,7 +8,7 @@ import { defineContent } from "@direct-booking/core";
 export default defineContent({
   nav: [
     { label: "The cottage", href: "/stay/the-nest/" },
-    { label: "A day here", href: "/#day" },
+    { label: "The story", href: "/#story" },
     { label: "Allie's guide", href: "/#guide" },
     { label: "Questions", href: "/#questions" },
   ],
@@ -46,18 +46,6 @@ export default defineContent({
       items: [
         { eyebrow: "Upstairs", title: "King bedroom and full bath", body: "Beside the living space, with high ceilings and natural light." },
         { eyebrow: "Downstairs", title: "Queen bedroom and its own bath", body: "The quieter floor, with French doors to the patio, next to the washer, dryer and garage." },
-      ],
-    },
-    {
-      type: "timeline",
-      id: "day",
-      eyebrow: "An unhurried day",
-      title: "A day at the Nest",
-      steps: [
-        { eyebrow: "Morning", title: "Coffee by the window", body: "Light comes in under the wood ceiling. The kitchen is stocked for a slow breakfast." },
-        { eyebrow: "Late morning", title: "Down to the water", body: "Walk to Lowman Beach, then follow the shore path through Lincoln Park." },
-        { eyebrow: "Afternoon", title: "Lunch at the Junction", body: "Downtown West Seattle's cafés and shops are about a mile the other way." },
-        { eyebrow: "Evening", title: "Fire pit, then fireplace", body: "Light the fire pit in the fenced yard, then finish the night by the fireplace inside." },
       ],
     },
     {
@@ -109,7 +97,7 @@ export default defineContent({
     { type: "policies", id: "policies" },
   ],
 
-  closing: { title: "Settle in and stay a while.", cta: "Check availability" },
+  // No closing section: the story's finale says "Settle in and stay a while." (story-notes.md).
 
   properties: {
     "nest-retreat": {
