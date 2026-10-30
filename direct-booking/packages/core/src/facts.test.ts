@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cancellationSentence, fillTemplate, formatTime, paymentSentence } from "./facts";
+import { cancellationSentence, cancellationTiersMarkdown, fillTemplate, formatTime, paymentSentence } from "./facts";
 
 describe("formatTime", () => {
   it("formats 24-hour times for the locale", () => {
@@ -36,5 +36,19 @@ describe("fillTemplate", () => {
   it("fills known placeholders and rejects unknown ones", () => {
     expect(fillTemplate("Check-in from {{checkInTime}}.", { checkInTime: "4 PM" })).toBe("Check-in from 4 PM.");
     expect(() => fillTemplate("{{nope}}", {})).toThrow(/Unknown placeholder \{\{nope\}\}/);
+  });
+});
+
+describe("cancellationTiersMarkdown", () => {
+  it("lists each tier, ending with the no-refund window", () => {
+    expect(
+      cancellationTiersMarkdown([
+        { daysBeforeArrival: 30, refundPercent: 100 },
+        { daysBeforeArrival: 14, refundPercent: 50 },
+        { daysBeforeArrival: 0, refundPercent: 0 },
+      ]),
+    ).toBe(
+      "- At least 30 days before check-in: a full refund of what you've paid\n- At least 14 days before check-in: a 50% refund of what you've paid\n- Fewer than 14 days before check-in: no refund of what you've paid",
+    );
   });
 });

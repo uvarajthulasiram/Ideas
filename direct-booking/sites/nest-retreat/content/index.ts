@@ -1,7 +1,7 @@
 // The Nest Retreat's words, photos and section order. Copy ported from the mockup
 // in ../../../nest-retreat/. {{placeholders}} are filled from site.ts (see
 // policyFacts in packages/core), so no policy figure is typed here.
-// Rules: no em dashes, US spelling, never ask Airbnb or VRBO guests to book direct.
+// Rules: no em dashes, US spelling, and no copy nudging channel guests to switch to this site.
 
 import { defineContent } from "@direct-booking/core";
 

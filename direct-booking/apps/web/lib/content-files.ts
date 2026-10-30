@@ -7,6 +7,10 @@ import { fill } from "./site";
 
 const contentDir = join(process.cwd(), "..", "..", "sites", site.id, "content");
 
+export function contentPath(name: string): string {
+  return join(contentDir, name);
+}
+
 /** A content file with {{placeholders}} filled from config. */
 export function contentFile(name: string): string {
   return fill(readFileSync(join(contentDir, name), "utf8"));

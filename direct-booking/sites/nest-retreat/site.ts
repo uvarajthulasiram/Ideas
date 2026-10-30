@@ -43,8 +43,12 @@ export default defineSite({
       serif: '"Newsreader", Georgia, serif',
       sans: '"Hanken Grotesk", system-ui, sans-serif',
     },
-    fontsHref:
-      "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap",
+    // Latin subsets from Google Fonts, self-hosted (SIL Open Font License; see ./fonts).
+    fonts: [
+      { family: "Hanken Grotesk", file: "hanken-grotesk-latin.woff2", weight: "400 600", preload: true },
+      { family: "Newsreader", file: "newsreader-latin.woff2", preload: true },
+      { family: "Newsreader", file: "newsreader-italic-latin.woff2", style: "italic" },
+    ],
   },
   directDiscountPercent: 0, // Allie decides at launch
   // TODO(host): payment rule and cancellation tiers, from Allie's Airbnb policy (Phase 7)

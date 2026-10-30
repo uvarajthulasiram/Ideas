@@ -5,6 +5,7 @@
 //   sites/selected.ts        re-exports sites/<SITE_ID>/site.ts and content (imported by both apps)
 //   apps/api/wrangler.jsonc  apps/api/wrangler.base.json + sites/<SITE_ID>/cloudflare.json
 //   apps/web/public/photos/  copies of sites/<SITE_ID>/photos/ for the static site
+//   apps/web/public/fonts/   copies of sites/<SITE_ID>/fonts/*.woff2
 //
 // Without SITE_ID it keeps the site chosen last time, so `SITE_ID=x npm run site`
 // once is enough. Run by the apps' predev/prebuild scripts, so the files stay fresh.
@@ -69,6 +70,12 @@ ${JSON.stringify(wrangler, null, 2)}
 const photosOut = join(root, "apps", "web", "public", "photos");
 rmSync(photosOut, { recursive: true, force: true });
 cpSync(join(sitesDir, siteId, "photos"), photosOut, { recursive: true, filter: (src) => !/\.(md|json)$/.test(src) });
+
+const fontsOut = join(root, "apps", "web", "public", "fonts");
+rmSync(fontsOut, { recursive: true, force: true });
+if (existsSync(join(sitesDir, siteId, "fonts"))) {
+  cpSync(join(sitesDir, siteId, "fonts"), fontsOut, { recursive: true, filter: (src) => !/\.(md|txt)$/.test(src) });
+}
 
 console.log(`Site: ${siteId}`);
 

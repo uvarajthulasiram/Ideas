@@ -21,3 +21,4 @@ apps/web/next-env.d.ts
 
 # Copied from sites/<SITE_ID>/photos by scripts/select-site.mjs
 apps/web/public/photos/
+apps/web/public/fonts/

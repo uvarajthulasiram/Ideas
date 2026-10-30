@@ -18,7 +18,8 @@
     "db:migrate:local": "npm run db:migrate:local -w @direct-booking/api",
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "todos": "grep -rn \"TODO(host)\" sites --include=*.ts --include=*.json --include=*.md"
+    "todos": "grep -rn \"TODO(host)\" sites --include=*.ts --include=*.json --include=*.md",
+    "check:copy": "node scripts/check-copy.mjs"
   },
   "devDependencies": {
     "typescript": "6.0.3",

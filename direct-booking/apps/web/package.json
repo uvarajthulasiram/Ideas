@@ -11,7 +11,8 @@
     "build": "next build",
     "preview": "npx --no-install wrangler pages dev out",
     "pretypecheck": "npm run select-site",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@direct-booking/core": "*",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/node": "22.20.5",
     "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.7"
+    "@types/react-dom": "19.2.7",
+    "vitest": "4.1.11"
   }
 }

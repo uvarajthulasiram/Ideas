@@ -115,7 +115,20 @@ export const SiteSchema = z
     brand: z.object({
       /** CSS custom properties, without the leading "--". */
       tokens: z.record(z.string().regex(/^[a-z][a-z0-9-]*$/), z.string()),
-      fontsHref: z.url().optional(),
+      /** Self-hosted font files in sites/<id>/fonts/ (no third-party requests from the page). */
+      fonts: z
+        .array(
+          z.object({
+            family: z.string().min(1),
+            file: z.string().regex(/^[\w.-]+\.woff2$/),
+            style: z.enum(["normal", "italic"]).default("normal"),
+            /** A weight or a variable range, e.g. "400" or "400 600". */
+            weight: z.string().regex(/^\d{3}( \d{3})?$/).default("400"),
+            /** Preload faces used above the fold. */
+            preload: z.boolean().default(false),
+          }),
+        )
+        .default([]),
     }),
     /** Discount on direct bookings compared with channel prices. Each host decides at launch. */
     directDiscountPercent: percent.default(0),

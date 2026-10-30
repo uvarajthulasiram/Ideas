@@ -39,6 +39,23 @@ export function cancellationSentence(tiers: CancellationTier[]): string {
   return `${list(parts).replace(/^./, (c) => c.toUpperCase())}.${after}`;
 }
 
+/** The tiers as a Markdown list, longest notice first, ending with the no-refund window. */
+export function cancellationTiersMarkdown(tiers: CancellationTier[]): string {
+  return tiers
+    .map((t, i) => {
+      const refund = t.refundPercent === 100 ? "a full refund" : t.refundPercent === 0 ? "no refund" : `a ${t.refundPercent}% refund`;
+      const prev = tiers[i - 1];
+      const when =
+        t.daysBeforeArrival === 0
+          ? prev
+            ? `Fewer than ${plural(prev.daysBeforeArrival, "day")} before check-in`
+            : "Any time before check-in"
+          : `At least ${plural(t.daysBeforeArrival, "day")} before check-in`;
+      return `- ${when}: ${refund} of what you've paid`;
+    })
+    .join("\n");
+}
+
 export function policyFacts(site: SiteConfig, property: PropertyConfig): Record<string, string> {
   return {
     siteName: site.name,
@@ -57,6 +74,8 @@ export function policyFacts(site: SiteConfig, property: PropertyConfig): Record<
     holdMinutes: String(HOLD_MINUTES),
     payment: paymentSentence(property.payment),
     cancellation: cancellationSentence(property.cancellation),
+    cancellationTiers: cancellationTiersMarkdown(property.cancellation),
+    currency: site.currency,
     licence: property.licence ? `${property.licence.label} ${property.licence.number}` : "",
   };
 }
