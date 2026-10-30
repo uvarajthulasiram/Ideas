@@ -5,7 +5,7 @@
   "description": "Cloudflare Worker: availability, quotes, checkout, Stripe webhook, iCal export, cron jobs.",
   "scripts": {
     "select-site": "node ../../scripts/select-site.mjs",
-    "types": "npm run select-site && wrangler types",
+    "types": "npm run select-site && wrangler types --env-file .dev.vars.example",
     "predev": "npm run types",
     "dev": "wrangler dev",
     "db:migrate:local": "npm run select-site && wrangler d1 migrations apply DB --local",

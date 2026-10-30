@@ -10,6 +10,8 @@ export default defineConfig({
       wrangler: { configPath: "./wrangler.jsonc" },
       miniflare: {
         bindings: {
+          ICAL_EXPORT_TOKEN: "test-export-token",
+          DEV_ORIGINS: "http://localhost:3000",
           TEST_MIGRATIONS: await readD1Migrations(fileURLToPath(new URL("./migrations", import.meta.url))),
         },
       },

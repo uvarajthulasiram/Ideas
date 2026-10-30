@@ -4,7 +4,8 @@
   "type": "module",
   "description": "Shared types, site config schema, date and money helpers, quote maths.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./fixtures/*": "./fixtures/*"
   },
   "scripts": {
     "test": "vitest run",
@@ -14,6 +15,7 @@
     "zod": "4.6.7"
   },
   "devDependencies": {
+    "@types/node": "22.20.5",
     "vitest": "4.1.11"
   }
 }
