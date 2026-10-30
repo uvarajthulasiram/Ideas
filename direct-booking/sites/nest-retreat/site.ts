@@ -19,6 +19,10 @@ export default defineSite({
     email: "hello@example.com", // TODO(host): guest-facing contact email
     phone: undefined, // TODO(host): guest-facing phone, if Allie wants one shown
   },
+  emailFrom: {
+    email: "bookings@example.com", // TODO(host): e.g. bookings@<domain>, once the domain is onboarded to Cloudflare Email Service
+    name: "The Nest Retreat",
+  },
   brand: {
     // "Driftwood & Fog", from the :root of ../../../nest-retreat/index.html
     tokens: {
@@ -75,7 +79,16 @@ export default defineSite({
         // { channel: "vrbo", url: "https://www.vrbo.com/icalendar/....ics" },
       ],
       pricelabsListingId: null, // TODO(host): PriceLabs listing id
-      photos: [], // Added in Phase 4, when web sizes are generated into ./photos
+      // Web sizes in ./photos (node scripts/make-photos.mjs ../nest-retreat/photos nest-retreat).
+      // TODO(host): full-size originals, and photos of the exterior, street and beach.
+      photos: [
+        { file: "living-window-wall", alt: "The upstairs living room: a green sofa under a pine-board ceiling, tall windows onto the trees, and a fireplace" },
+        { file: "living-kitchen-open-plan", alt: "Open-plan living space with French doors, a kitchen island with leather stools and woven pendant lights" },
+        { file: "kitchen-island", alt: "The kitchen: white cabinets, open wood shelves, a farmhouse sink and four stools at the island" },
+        { file: "bedroom-upstairs", alt: "The upstairs king bedroom under a sloped wood ceiling, with a window onto the trees" },
+        { file: "bedroom-garden-doors", alt: "The downstairs queen bedroom with French doors opening onto the patio" },
+        { file: "firepit-patio", alt: "Four black Adirondack chairs around a round fire pit in the fenced garden" },
+      ],
       licence: {
         label: "Seattle STR registration",
         number: "STR-OPLI-26-007039", // TODO(host): confirm; taken from the mockup, and whether it must show on the site

@@ -10,3 +10,14 @@ ICAL_EXPORT_TOKEN=dev-export-token
 PRICE_SOURCE=fixture
 # TODO(host): PriceLabs API key (and endpoint details for the client in src/prices.ts).
 PRICELABS_API_KEY=
+# Where the guest site runs; Stripe returns guests here after paying.
+SITE_ORIGIN=http://localhost:3000
+# "fake" uses a local test checkout page instead of Stripe (development only).
+PAYMENTS=fake
+# Stripe TEST keys only (sk_test_..., whsec_... from `stripe listen`). Live keys are refused before launch.
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+# Cloudflare's always-pass Turnstile test secret; its results report hostname example.com.
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+# Frontend hostnames the Turnstile result must match (production: the site's domain only, never localhost).
+TURNSTILE_HOSTNAMES=example.com

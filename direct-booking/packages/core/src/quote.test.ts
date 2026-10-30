@@ -13,6 +13,7 @@ function makeSite(overrides: Partial<SiteInput> = {}, propertyOverrides: Partial
     timezone: "America/Los_Angeles",
     host: { name: "Host", alertEmail: "host@example.com" },
     contact: { email: "hello@example.com" },
+    emailFrom: { email: "bookings@example.com", name: "Test" },
     brand: { tokens: {} },
     payment: { fullPaymentWithinDays: 30, depositPercent: 50, balanceDueDaysBeforeArrival: 30 },
     cancellation: [

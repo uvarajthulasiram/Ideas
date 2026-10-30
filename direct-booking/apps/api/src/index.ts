@@ -3,6 +3,7 @@
 import { SITE_ID, site } from "@direct-booking/sites/selected";
 import { findProperty } from "@direct-booking/core";
 import { availability, parseRange, quoteFromDb } from "./availability";
+import { checkout, devCheckoutAction, devCheckoutPage, getBookingRoute, releaseRoute, stripeWebhook } from "./checkout";
 import { expireHolds, exportCalendar, exportToken, importCalendars } from "./calendars";
 import { realDeps, type Deps } from "./deps";
 import { HttpError, errorResponse, json, readJson, safeEqual, withCors } from "./http";
@@ -47,6 +48,24 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
     const result = await quoteFromDb(env.DB, site, property, body, deps.now());
     if (!result.ok) throw new HttpError(422, result.error.code, result.error.message, result.error);
     return json({ quote: result.quote });
+  }
+
+  if (method === "POST" && url.pathname === "/api/checkout") {
+    return checkout(request, env, deps, (id) => propertyOr404(id));
+  }
+
+  if (method === "POST" && url.pathname === "/api/stripe/webhook") {
+    return stripeWebhook(request, env, deps);
+  }
+
+  if ((m = /^\/api\/booking\/(bk_[A-Za-z0-9_-]+)(\/release)?$/.exec(url.pathname))) {
+    if (method === "GET" && !m[2]) return getBookingRoute(env, m[1]!, url.searchParams.get("t"));
+    if (method === "POST" && m[2]) return releaseRoute(env, deps, m[1]!, url.searchParams.get("t"));
+  }
+
+  if (deps.payments.name === "fake" && (m = /^\/api\/dev\/checkout\/(fake_cs_[A-Za-z0-9_-]+)$/.exec(url.pathname))) {
+    if (method === "GET") return devCheckoutPage(url);
+    if (method === "POST") return devCheckoutAction(request, url, env, deps, m[1]!);
   }
 
   if (method === "GET" && (m = /^\/ical\/([a-z0-9-]+)\/([A-Za-z0-9_-]+)\.ics$/.exec(url.pathname))) {
@@ -100,7 +119,7 @@ export default {
     if (request.method === "OPTIONS") return withCors(request, new Response(null, { status: 204 }), allowedOrigins(env));
     let response: Response;
     try {
-      response = await handle(request, env, realDeps(env));
+      response = await handle(request, env, realDeps(env, request.url));
     } catch (error) {
       response = errorResponse(error);
     }

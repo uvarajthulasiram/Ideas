@@ -7,7 +7,7 @@
     "select-site": "node ../../scripts/select-site.mjs",
     "types": "npm run select-site && wrangler types --env-file .dev.vars.example",
     "predev": "npm run types",
-    "dev": "wrangler dev",
+    "dev": "wrangler dev --test-scheduled",
     "db:migrate:local": "npm run select-site && wrangler d1 migrations apply DB --local",
     "pretest": "npm run types",
     "test": "vitest run",
@@ -17,7 +17,8 @@
   "dependencies": {
     "@direct-booking/core": "*",
     "@direct-booking/sites": "*",
-    "zod": "4.6.7"
+    "zod": "4.6.7",
+    "stripe": "23.0.0"
   },
   "devDependencies": {
     "@cloudflare/vitest-plugin": "1.4.2",

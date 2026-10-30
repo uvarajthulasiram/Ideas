@@ -26,6 +26,7 @@ function site(overrides: Partial<SiteInput> = {}): SiteInput {
     timezone: "America/Edmonton",
     host: { name: "Host", alertEmail: "host@example.com" },
     contact: { email: "hello@example.com" },
+    emailFrom: { email: "bookings@example.com", name: "Test" },
     brand: { tokens: { ink: "#222" } },
     payment: { fullPaymentWithinDays: 30, depositPercent: 50, balanceDueDaysBeforeArrival: 14 },
     cancellation: [

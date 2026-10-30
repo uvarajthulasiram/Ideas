@@ -110,6 +110,8 @@ export const SiteSchema = z
     timezone: timeZone,
     host: z.object({ name: z.string().min(1), alertEmail: z.email() }),
     contact: z.object({ email: z.email(), phone: z.string().optional() }),
+    /** Sender for booking emails; its domain must be onboarded to Cloudflare Email Service. */
+    emailFrom: z.object({ email: z.email(), name: z.string().min(1) }),
     brand: z.object({
       /** CSS custom properties, without the leading "--". */
       tokens: z.record(z.string().regex(/^[a-z][a-z0-9-]*$/), z.string()),

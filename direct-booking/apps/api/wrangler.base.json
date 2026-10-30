@@ -2,16 +2,29 @@
   "$schema": "../../node_modules/wrangler/config-schema.json",
   "main": "src/index.ts",
   "compatibility_date": "2026-10-01",
-  "observability": { "enabled": true },
-  "dev": { "port": 8788 },
+  "observability": {
+    "enabled": true
+  },
+  "dev": {
+    "port": 8788
+  },
   "triggers": {
-    "crons": ["*/15 * * * *", "0 10 * * *", "0 17 * * *"]
+    "crons": [
+      "*/15 * * * *",
+      "0 10 * * *",
+      "0 17 * * *"
+    ]
   },
   "vars": {},
   "d1_databases": [
     {
       "binding": "DB",
       "migrations_dir": "migrations"
+    }
+  ],
+  "send_email": [
+    {
+      "name": "EMAIL"
     }
   ]
 }
