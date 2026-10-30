@@ -4,10 +4,20 @@ Project notes for the `scroll-story-site` skill. Read first in any later session
 
 ## Current phase
 
-Phase 5 gate: the rough prototype is published for approval. Next: Phase 6a (engine and first scene in `apps/web`), after approval.
+Phase 5 gate: prototype 2 (the autoplay film) is published for approval. Next: Phase 6a (build it in `apps/web`), after approval.
 
 - Storyboard (approved 2026-10-30, "go with your picks"): https://claude.ai/artifact/3L1ZAs6KPJcjo4vUhkVR6k
-- Prototype v1: https://claude.ai/artifact/MmZzwbaQpiEVj54NrMwMtC
+- Prototype (v1 scroll-scrubbed, v2 autoplay film, same link): https://claude.ai/artifact/MmZzwbaQpiEVj54NrMwMtC
+
+## Override of the skill's default (Uvaraj and Allie, 2026-10-30)
+
+The skill's default is a pinned story scrubbed by scroll. On a phone Allie found it unclear: the page stopped moving while she scrolled. Uvaraj asked for autoplay instead, with normal scrolling past the story. So:
+
+- The story is a self-contained player, about 64 s, that plays by itself when at least 55% of it is on screen and pauses when it leaves the screen or the tab is hidden. The page always scrolls normally.
+- Controls under the picture (never over the middle): play/pause, chapter bar (tap to jump), "Skip the story", "Show as pictures". Tap the picture to pause. A first-play hint: "Playing. Pause anytime, or keep scrolling."
+- At the end: "Check your dates", "Watch again", and the page continues below.
+- Reduced motion: no autoplay; a "Play the story" button and "Show as pictures".
+- Shots join with short cross-dissolves where the camera can't move continuously (the skill's continuity rule still holds inside each shot; dissolves never pop).
 
 ## Decisions
 
@@ -28,7 +38,23 @@ Phase 5 gate: the rough prototype is published for approval. Next: Phase 6a (eng
 | Additions (Uvaraj, 2026-10-30) | What a stay feels like (guests' point of view) and "minutes from beaches, cafés, restaurants and downtown Seattle" (beats "Now it's yours for a while" and "Minutes from it all") |
 | Page pass | Drop "A day at the Nest" timeline and the closing section; keep the rest |
 
-## Storyboard table
+## Shot list (prototype 2, supersedes the storyboard table below)
+
+| # | Shot | Seconds | What you see | Caption |
+|---|---|---|---|---|
+| 1 | years | 6.5 | The old garage through autumn leaves, snow, spring blossom; bird on the wire | For years, it was just a garage / Tools, bikes, and whatever didn't fit. |
+| 2 | rise | 6.5 | Construction time-lapse: scaffolding, walls rise, windows, roof drops on, lights on; bird rides the peak | Then it reached upward / Same footprint, a home built on top. |
+| 3 | arrive | 7 | A car pulls up; the couple with a rolling suitcase; keypad close-up turns green; the door opens | Your stay starts at the door / Self check-in with your own code. |
+| 4 | inside | 7.5 | Dollhouse cutaway: both floors, EV charger in the garage, queen room and bath, the nest upstairs; the couple climbs and sits | Tucked in, lifted up / Two floors, two bedrooms, two baths. |
+| 5 | aerial | 8 | Fly up to a schematic map: routes and labels for Lowman Beach, Lincoln Park, the Junction's cafés and restaurants, downtown Seattle | Minutes from it all / Beaches, cafés, restaurants, downtown. |
+| 6 | beach | 8.5 | Snow-capped mountains, an island, waves and foam, wet sand, driftwood; the couple sits on a log with coffee | Down to the Sound / Lowman Beach, just under a mile away. |
+| 7 | golden | 7 | Golden hour; drizzle cloud; bird ducks under the eave; the couple at the big window | Home as the sky turns gold / Watch the weather roll in. |
+| 8 | night | 7 | The backyard: round fire pit, four Adirondack chairs, string lights, stars | Fire pit, then stars / The backyard, after dark. |
+| 9 | dawn | 7 | Dawn over the house; the name and the driftwood rule land | Settle in and stay a while. / Check your dates, Watch again |
+
+Facts to confirm with Allie: the house exterior colors (drawn as cedar and slate; real colors unknown), the downstairs layout in the cutaway (garage, queen room with French doors, bath), the keypad (self check-in with a door code), and the map is schematic, not to scale.
+
+## Storyboard table (v1, superseded)
 
 | # | Segment | Screens | What the visitor sees | Headline | Line | Proves |
 |---|---|---|---|---|---|---|
