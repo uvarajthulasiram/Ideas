@@ -47,6 +47,7 @@ function lazy(make: () => Payments): Payments {
     name: "stripe",
     createCheckout: (i) => get().createCheckout(i),
     expireCheckout: (id) => get().expireCheckout(id),
+    chargeSaved: (i) => get().chargeSaved(i),
     parseWebhook: (b, s) => get().parseWebhook(b, s),
     refund: (pi, a, r, k) => get().refund(pi, a, r, k),
   };

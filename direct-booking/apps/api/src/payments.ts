@@ -25,6 +25,8 @@ export interface PaymentEvent {
   type: string;
   session?: {
     id: string;
+    /** "balance" for a balance payment link sent after an off-session charge failed. */
+    kind: "booking" | "balance";
     bookingId: string | null;
     paymentStatus: string;
     amountTotal: number;
@@ -33,12 +35,27 @@ export interface PaymentEvent {
   };
 }
 
+export interface ChargeInput {
+  customerId: string;
+  /** The deposit's PaymentIntent, whose card was saved for this charge. */
+  depositPaymentIntentId: string;
+  amount: number;
+  currency: string;
+  description: string;
+  idempotencyKey: string;
+  metadata: Record<string, string>;
+}
+
+export type ChargeResult = { ok: true; paymentIntentId: string } | { ok: false; paymentIntentId: string | null; reason: string };
+
 export interface Payments {
   readonly name: "stripe" | "fake";
   createCheckout(input: CheckoutInput): Promise<{ id: string; url: string }>;
   expireCheckout(sessionId: string): Promise<void>;
   /** Verifies the signature; throws if it doesn't match. */
   parseWebhook(rawBody: string, signature: string | null): Promise<PaymentEvent>;
+  /** Off-session charge of the saved card. Declines are results, not exceptions. */
+  chargeSaved(input: ChargeInput): Promise<ChargeResult>;
   /** Same idempotency key, same refund: safe to retry. */
   refund(paymentIntentId: string, amount: number, reason: string, idempotencyKey: string): Promise<{ id: string }>;
 }
@@ -96,6 +113,7 @@ export function stripePayments(secretKey: string, webhookSecret: string): Paymen
           type: event.type,
           session: {
             id: s.id,
+            kind: s.metadata?.kind === "balance" ? "balance" : "booking",
             bookingId: s.metadata?.bookingId ?? s.client_reference_id ?? null,
             paymentStatus: s.payment_status,
             amountTotal: s.amount_total ?? 0,
@@ -105,6 +123,34 @@ export function stripePayments(secretKey: string, webhookSecret: string): Paymen
         };
       }
       return { id: event.id, type: event.type };
+    },
+
+    async chargeSaved(input) {
+      const deposit = await stripe.paymentIntents.retrieve(input.depositPaymentIntentId);
+      const paymentMethod = typeof deposit.payment_method === "string" ? deposit.payment_method : deposit.payment_method?.id;
+      if (!paymentMethod) return { ok: false, paymentIntentId: null, reason: "No saved card on the deposit payment" };
+      try {
+        const pi = await stripe.paymentIntents.create(
+          {
+            amount: input.amount,
+            currency: input.currency.toLowerCase(),
+            customer: input.customerId,
+            payment_method: paymentMethod,
+            off_session: true,
+            confirm: true,
+            description: input.description,
+            metadata: input.metadata,
+          },
+          { idempotencyKey: input.idempotencyKey },
+        );
+        return pi.status === "succeeded" ? { ok: true, paymentIntentId: pi.id } : { ok: false, paymentIntentId: pi.id, reason: `Payment ${pi.status}` };
+      } catch (error) {
+        if (error instanceof Stripe.errors.StripeCardError) {
+          const pi = (error.raw as { payment_intent?: { id?: string } } | undefined)?.payment_intent?.id ?? null;
+          return { ok: false, paymentIntentId: pi, reason: error.message };
+        }
+        throw error;
+      }
     },
 
     async refund(paymentIntentId, amount, reason, idempotencyKey) {
@@ -122,11 +168,15 @@ export function fakePayments(apiOrigin: string): Payments {
   return {
     name: "fake",
     async createCheckout(input) {
-      const id = `fake_cs_${input.bookingId}`;
-      const q = new URLSearchParams({ success: input.successUrl, cancel: input.cancelUrl, amount: String(input.amount), currency: input.currency, what: input.description });
+      const balance = input.metadata.kind === "balance";
+      const id = `fake_cs_${balance ? "balance_" : ""}${input.bookingId}`;
+      const q = new URLSearchParams({ success: input.successUrl, cancel: input.cancelUrl, amount: String(input.amount), currency: input.currency, what: input.description, kind: balance ? "balance" : "booking" });
       return { id, url: `${apiOrigin}/api/dev/checkout/${id}?${q}` };
     },
     async expireCheckout() {},
+    async chargeSaved(input) {
+      return { ok: true, paymentIntentId: `fake_pi_${input.idempotencyKey}` };
+    },
     async parseWebhook(rawBody) {
       return JSON.parse(rawBody) as PaymentEvent;
     },

@@ -66,7 +66,7 @@ export async function checkout(request: Request, env: Env, deps: Deps, property:
       successUrl: `${origin}/booking/confirmed/?${back}`,
       cancelUrl: `${origin}/booking/cancelled/?${back}`,
       saveCard: quote.dueLater > 0,
-      metadata: { bookingId: hold.id, siteId: site.id, propertyId: p.id },
+      metadata: { bookingId: hold.id, siteId: site.id, propertyId: p.id, kind: "booking" },
     });
   } catch (error) {
     // No session, no hold: free the dates straight away.
@@ -126,12 +126,13 @@ export async function devCheckoutAction(request: Request, url: URL, env: Env, de
   const success = url.searchParams.get("success")!;
   const cancel = url.searchParams.get("cancel")!;
   if (form.get("action") !== "pay") return Response.redirect(cancel, 303);
-  const bookingId = sessionId.replace(/^fake_cs_/, "");
+  const bookingId = sessionId.replace(/^fake_cs_(balance_)?/, "");
   await handlePaymentEvent(ctx(env, deps), {
     id: `fake_evt_${crypto.randomUUID()}`,
     type: "checkout.session.completed",
     session: {
       id: sessionId,
+      kind: url.searchParams.get("kind") === "balance" ? "balance" : "booking",
       bookingId,
       paymentStatus: "paid",
       amountTotal: Number(url.searchParams.get("amount")),

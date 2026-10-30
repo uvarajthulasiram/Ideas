@@ -42,7 +42,7 @@ function completed(bookingId: string, sessionId: string, amount: number): Paymen
   return {
     id: `evt_${crypto.randomUUID()}`,
     type: "checkout.session.completed",
-    session: { id: sessionId, bookingId, paymentStatus: "paid", amountTotal: amount, paymentIntentId: `pi_${bookingId}`, customerId: "cus_1" },
+    session: { id: sessionId, kind: "booking", bookingId, paymentStatus: "paid", amountTotal: amount, paymentIntentId: `pi_${bookingId}`, customerId: "cus_1" },
   };
 }
 
@@ -196,7 +196,7 @@ describe("POST /api/stripe/webhook", () => {
   it("frees the dates when Checkout expires unpaid", async () => {
     const deps = await setup();
     const b = await heldBooking(deps);
-    await webhook(deps, { id: "evt", type: "checkout.session.expired", session: { id: b.session, bookingId: b.id, paymentStatus: "unpaid", amountTotal: 0, paymentIntentId: null, customerId: null } });
+    await webhook(deps, { id: "evt", type: "checkout.session.expired", session: { id: b.session, kind: "booking", bookingId: b.id, paymentStatus: "unpaid", amountTotal: 0, paymentIntentId: null, customerId: null } });
     expect((await getBooking(env.DB, b.id))!.status).toBe("expired");
     expect(((await startCheckout(deps)) as Response).status).toBe(200);
   });
@@ -243,7 +243,7 @@ describe("POST /api/stripe/webhook", () => {
     expect(await payments.parseWebhook(payload, header)).toEqual({
       id: "evt_1",
       type: "checkout.session.completed",
-      session: { id: "cs_1", bookingId: "bk_1", paymentStatus: "paid", amountTotal: 32350, paymentIntentId: "pi_1", customerId: "cus_1" },
+      session: { id: "cs_1", kind: "booking", bookingId: "bk_1", paymentStatus: "paid", amountTotal: 32350, paymentIntentId: "pi_1", customerId: "cus_1" },
     });
     await expect(payments.parseWebhook(payload, header.replace(/v1=[0-9a-f]/, "v1=0"))).rejects.toThrow();
     expect(() => stripePayments("sk_live_123", secret)).toThrow(/Live Stripe key refused/);

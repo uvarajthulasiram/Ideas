@@ -1,13 +1,16 @@
 import type { Deps } from "../src/deps";
 import type { OutgoingEmail } from "../src/email";
-import type { CheckoutInput, PaymentEvent, Payments } from "../src/payments";
+import type { ChargeInput, CheckoutInput, PaymentEvent, Payments } from "../src/payments";
 import { fixturePriceSource, type PriceSource } from "../src/prices";
 
 export interface FakePayments extends Payments {
   checkouts: CheckoutInput[];
   expired: string[];
   refunds: { paymentIntentId: string; amount: number; key: string }[];
+  charges: ChargeInput[];
   failCheckout: boolean;
+  /** Set to a reason to make off-session charges decline. */
+  declineCharges: string | null;
 }
 
 export function fakeStripe(): FakePayments {
@@ -16,7 +19,9 @@ export function fakeStripe(): FakePayments {
     checkouts: [],
     expired: [],
     refunds: [],
+    charges: [],
     failCheckout: false,
+    declineCharges: null,
     async createCheckout(input) {
       if (p.failCheckout) throw new Error("Stripe is down");
       p.checkouts.push(input);
@@ -24,6 +29,10 @@ export function fakeStripe(): FakePayments {
     },
     async expireCheckout(id) {
       p.expired.push(id);
+    },
+    async chargeSaved(input) {
+      p.charges.push(input);
+      return p.declineCharges ? { ok: false, paymentIntentId: "pi_declined", reason: p.declineCharges } : { ok: true, paymentIntentId: `pi_${input.idempotencyKey}` };
     },
     async parseWebhook(raw, sig) {
       if (sig !== "valid") throw new Error("bad signature");

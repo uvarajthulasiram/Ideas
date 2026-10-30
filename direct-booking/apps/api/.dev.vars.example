@@ -21,3 +21,7 @@ STRIPE_WEBHOOK_SECRET=
 TURNSTILE_SECRET=1x0000000000000000000000000000000AA
 # Frontend hostnames the Turnstile result must match (production: the site's domain only, never localhost).
 TURNSTILE_HOSTNAMES=example.com
+# Cloudflare Access for /api/admin/* and /admin/ (e.g. nestretreat.cloudflareaccess.com and the app's AUD tag).
+# Left empty, admin routes work only for a localhost SITE_ORIGIN. TODO(host): set both in production.
+ACCESS_TEAM_DOMAIN=
+ACCESS_AUD=

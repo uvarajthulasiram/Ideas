@@ -36,6 +36,13 @@ export interface BookingRow {
   guest_emailed_at: number | null;
   host_alerted_at: number | null;
   status_note: string | null;
+  balance_status: "pending" | "paid" | "failed" | null;
+  balance_attempted_at: number | null;
+  balance_payment_intent_id: string | null;
+  balance_session_id: string | null;
+  balance_error: string | null;
+  cancelled_at: number | null;
+  refunded_amount: number;
 }
 
 export function getBooking(db: D1Database, id: string): Promise<BookingRow | null> {
@@ -141,14 +148,26 @@ export async function notifyConfirmed(ctx: Context, id: string): Promise<void> {
   }
 }
 
-export type PaymentOutcome = "confirmed" | "already" | "refunded" | "expired" | "ignored";
+export type PaymentOutcome = "confirmed" | "already" | "refunded" | "expired" | "ignored" | "balance_paid";
 
 export async function handlePaymentEvent(ctx: Context, event: PaymentEvent): Promise<PaymentOutcome> {
   const s = event.session;
   if (!s?.bookingId) return "ignored";
   const row = await getBooking(ctx.db, s.bookingId);
-  if (!row || (row.stripe_session_id !== null && row.stripe_session_id !== s.id)) return "ignored";
+  if (!row) return "ignored";
   const now = unix(ctx.deps.now());
+
+  if (s.kind === "balance") {
+    if (row.balance_session_id !== s.id || event.type !== "checkout.session.completed" || s.paymentStatus !== "paid") return "ignored";
+    const r = await ctx.db
+      .prepare(
+        "UPDATE bookings SET amount_paid = amount_paid + ?, balance_status = 'paid', balance_payment_intent_id = ?, balance_error = NULL, updated_at = ? WHERE id = ? AND balance_status = 'failed'",
+      )
+      .bind(s.amountTotal, s.paymentIntentId, now, row.id)
+      .run();
+    return r.meta.changes === 1 ? "balance_paid" : "already";
+  }
+  if (row.stripe_session_id !== null && row.stripe_session_id !== s.id) return "ignored";
 
   if (event.type === "checkout.session.expired") {
     await ctx.db.prepare("UPDATE bookings SET status = 'expired', updated_at = ? WHERE id = ? AND status = 'hold'").bind(now, row.id).run();
@@ -227,6 +246,7 @@ export async function releaseHold(ctx: Context, row: BookingRow): Promise<boolea
 /** What the confirmation page may show: no contact details, no Stripe ids. */
 export function bookingView(row: BookingRow) {
   return {
+    balanceStatus: row.balance_status,
     id: row.id,
     status: row.status,
     property: row.property_id,

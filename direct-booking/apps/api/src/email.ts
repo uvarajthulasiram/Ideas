@@ -171,3 +171,22 @@ export function lateBookingRefundGuest(site: SiteConfig, property: PropertyConfi
   );
   return { to: b.guestEmail, subject: `Your payment for ${property.name} has been refunded`, replyTo: site.contact.email, ...body };
 }
+
+export function cancellationGuest(site: SiteConfig, property: PropertyConfig, b: BookingForEmail, refund: number): OutgoingEmail {
+  const body = render(
+    [
+      { p: `Hi ${b.guestName.split(" ")[0]},` },
+      { p: `Your stay at ${property.name} (${longDate(b.checkIn, site.locale)} to ${longDate(b.checkOut, site.locale)}) has been cancelled.` },
+      {
+        p:
+          refund > 0
+            ? `We've refunded ${formatMoney(refund, b.quote.currency, site.locale)} to your card. Banks usually show it within 5 to 10 business days.`
+            : "Under the cancellation policy, no refund is due for this booking.",
+      },
+      { p: `Questions? Reply to this email or write to ${site.contact.email}.` },
+      { p: site.host.name },
+    ],
+    `Booking reference ${b.id}`,
+  );
+  return { to: b.guestEmail, subject: `Your stay at ${property.name} has been cancelled`, replyTo: site.contact.email, ...body };
+}

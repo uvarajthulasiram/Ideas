@@ -3,7 +3,10 @@
 import { SITE_ID, site } from "@direct-booking/sites/selected";
 import { findProperty } from "@direct-booking/core";
 import { availability, parseRange, quoteFromDb } from "./availability";
-import { checkout, devCheckoutAction, devCheckoutPage, getBookingRoute, releaseRoute, stripeWebhook } from "./checkout";
+import { requireAdmin } from "./access";
+import { adminContext, addBlock, cancelBooking, deleteBlock, listBlocks, listBookings, syncNow, syncRuns } from "./admin";
+import { chargeDueBalances } from "./balances";
+import { checkout, devCheckoutAction, devCheckoutPage, getBookingRoute, releaseRoute, siteOrigin, stripeWebhook } from "./checkout";
 import { expireHolds, exportCalendar, exportToken, importCalendars } from "./calendars";
 import { realDeps, type Deps } from "./deps";
 import { HttpError, errorResponse, json, readJson, safeEqual, withCors } from "./http";
@@ -68,6 +71,19 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
     if (method === "POST") return devCheckoutAction(request, url, env, deps, m[1]!);
   }
 
+  if (url.pathname.startsWith("/api/admin/")) {
+    const admin = await requireAdmin(request, env, deps.fetch, deps.now());
+    const path = url.pathname.slice("/api/admin".length);
+    if (method === "GET" && path === "/bookings") return listBookings(env, deps);
+    if (method === "POST" && (m = /^\/bookings\/(bk_[A-Za-z0-9_-]+)\/cancel$/.exec(path))) return cancelBooking(request, env, deps, m[1]!, admin);
+    if (method === "GET" && path === "/blocks") return listBlocks(env);
+    if (method === "POST" && path === "/blocks") return addBlock(request, env, deps);
+    if (method === "DELETE" && (m = /^\/blocks\/(\d+)$/.exec(path))) return deleteBlock(env, Number(m[1]));
+    if (method === "POST" && path === "/sync") return syncNow(env, deps);
+    if (method === "GET" && path === "/sync-runs") return syncRuns(env);
+    throw new HttpError(404, "not_found", "Not found.");
+  }
+
   if (method === "GET" && (m = /^\/ical\/([a-z0-9-]+)\/([A-Za-z0-9_-]+)\.ics$/.exec(url.pathname))) {
     const property = site.properties.find((p) => p.id === m![1]);
     if (!property || !env.ICAL_EXPORT_TOKEN || !safeEqual(m[2]!, await exportToken(env.ICAL_EXPORT_TOKEN, property.id))) {
@@ -95,6 +111,11 @@ export async function runCron(cron: string, env: Env, deps: Deps): Promise<void>
         const result = await refreshRates(env.DB, property, site.currency, deps.prices, deps);
         if (!result.ok) console.error(`Price fetch ${property.id}: ${result.error}`);
       }
+      return;
+    }
+    case CRONS.balances: {
+      const results = await chargeDueBalances(adminContext(env, deps), siteOrigin(env));
+      if (results.length) console.log("Balances", JSON.stringify(results));
       return;
     }
     default:
