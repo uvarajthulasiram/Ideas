@@ -6,3 +6,7 @@
 DEV_ORIGINS=http://localhost:3000
 # Secret behind each property's iCal export URL (any long random string).
 ICAL_EXPORT_TOKEN=dev-export-token
+# Where nightly rates come from: "fixture" (made-up rates, development only) or "pricelabs".
+PRICE_SOURCE=fixture
+# TODO(host): PriceLabs API key (and endpoint details for the client in src/prices.ts).
+PRICELABS_API_KEY=

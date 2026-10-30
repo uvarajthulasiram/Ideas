@@ -1,9 +1,13 @@
 // The booking API: routes from PLAN.md, plus the cron jobs.
 
 import { SITE_ID, site } from "@direct-booking/sites/selected";
+import { findProperty } from "@direct-booking/core";
+import { availability, parseRange, quoteFromDb } from "./availability";
 import { expireHolds, exportCalendar, exportToken, importCalendars } from "./calendars";
 import { realDeps, type Deps } from "./deps";
-import { HttpError, errorResponse, json, safeEqual, withCors } from "./http";
+import { HttpError, errorResponse, json, readJson, safeEqual, withCors } from "./http";
+import { refreshRates } from "./prices";
+import { QuoteBody, parseBody } from "./schemas";
 
 export const CRONS = {
   calendars: "*/15 * * * *",
@@ -30,6 +34,21 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
     });
   }
 
+  if (method === "GET" && url.pathname === "/api/availability") {
+    const property = propertyOr404(url.searchParams.get("property"));
+    const { from, to } = parseRange(url.searchParams.get("from"), url.searchParams.get("to"));
+    const nights = await availability(env.DB, property, from, to, deps.now());
+    return json({ property: property.id, from, to, nights });
+  }
+
+  if (method === "POST" && url.pathname === "/api/quote") {
+    const body = parseBody(QuoteBody, await readJson(request));
+    const property = propertyOr404(body.property);
+    const result = await quoteFromDb(env.DB, site, property, body, deps.now());
+    if (!result.ok) throw new HttpError(422, result.error.code, result.error.message, result.error);
+    return json({ quote: result.quote });
+  }
+
   if (method === "GET" && (m = /^\/ical\/([a-z0-9-]+)\/([A-Za-z0-9_-]+)\.ics$/.exec(url.pathname))) {
     const property = site.properties.find((p) => p.id === m![1]);
     if (!property || !env.ICAL_EXPORT_TOKEN || !safeEqual(m[2]!, await exportToken(env.ICAL_EXPORT_TOKEN, property.id))) {
@@ -52,9 +71,22 @@ export async function runCron(cron: string, env: Env, deps: Deps): Promise<void>
       await expireHolds(env.DB, deps.now());
       return;
     }
+    case CRONS.prices: {
+      for (const property of site.properties) {
+        const result = await refreshRates(env.DB, property, site.currency, deps.prices, deps);
+        if (!result.ok) console.error(`Price fetch ${property.id}: ${result.error}`);
+      }
+      return;
+    }
     default:
       console.log(`Cron ${cron}: nothing scheduled`);
   }
+}
+
+function propertyOr404(idOrSlug: string | null) {
+  const property = idOrSlug ? findProperty(site, idOrSlug) : undefined;
+  if (!property) throw new HttpError(404, "unknown_property", "No such property.");
+  return property;
 }
 
 function allowedOrigins(env: Env): string[] {
